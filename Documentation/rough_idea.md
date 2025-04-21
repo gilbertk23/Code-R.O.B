@@ -9,3 +9,7 @@
 - 2D
 - pixel-art
 - we make all the art ourselves(!)
+## sound design
+TRACKER MUSIC
+- we make all of the sound assets ourselves
+- reccomended application: https://milkytracker.org/
