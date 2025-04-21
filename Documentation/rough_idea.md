@@ -5,3 +5,7 @@
   - enemies and player sprites
   - grid-based level design
   - 
+## graphics
+- 2D
+- pixel-art
+- we make all the art ourselves(!)
