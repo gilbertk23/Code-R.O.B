@@ -4,7 +4,7 @@
   - 2D
   - enemies and player sprites
   - grid-based level design
-  - 
+- side-scrolling levels / areas
 ## graphics
 - 2D
 - pixel-art
