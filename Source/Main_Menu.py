@@ -1,4 +1,8 @@
-class Main_Menu:
+# Import Files/Modules
+from default_window import default_window
+
+
+class Main_Menu(default_window):
 	# Data Attributes
 	__font = "Error"
 	__border_color = "Error"
@@ -9,7 +13,8 @@ class Main_Menu:
 	__box_end = "Error"
 
 	# Init
-	def __init__(self, font, border_color, start_game_rect_color, settings_rect_color, credits_rect_color, box_start, box_end): 
+	def __init__(self, WIDTH, HEIGHT, background, game_name, font, border_color, start_game_rect_color, settings_rect_color, credits_rect_color, box_start, box_end):
+		super().__init__(WIDTH, HEIGHT, background, game_name)
 		self.set_font(font)
 		self.set_border_color(border_color)
 		self.set_start_game_rect_color(start_game_rect_color)
@@ -67,7 +72,8 @@ class Main_Menu:
 	# ToString
 	def __str__(self):
 		Main_Menu_string = ""
-		Main_Menu_string += (f"Main Menu Data Attributes-->\n\t"	
+		Main_Menu_string += (f"Main Menu Data Attributes-->\n\t"
+			f"{super().__str__}\n\t"
 			f"Font: {self.get_font()}\n\t"
 			f"Border_Color: {self.get_border_color()}\n\t"
 			f"Start_Game_Rect_Color: {self.get_start_game_rect_color()}\n\t"
