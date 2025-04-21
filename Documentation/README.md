@@ -1,4 +1,5 @@
 # Documentation Index
-placeholder for doc index
+- [Rough Idea](rough_idea.md)
+
 ## How Documentation Will Be Done
-everything is done in .md files unless there is reason to use another format
+Everything is to be done in `.md` files unless there is reason to use another format (e.g. diagrams).
