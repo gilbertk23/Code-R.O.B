@@ -2,7 +2,6 @@
 from Source.Game_Windows.default_window import default_window
 import pygame
 
-
 class Main_Menu(default_window):
 	# Data Attributes
 	__font = None
@@ -24,7 +23,7 @@ class Main_Menu(default_window):
 		self.set_box_start(box_start)
 		self.set_box_end(box_end)
 
-		self.title_font = pygame.font.SysFont('Comic Sans MS', 70)
+		self.title_font = pygame.font.SysFont('C:\Windows\Fonts\CALISTBI.TTF', 50)
 		self.option_font = pygame.font.SysFont('Comic Sans MS', 40)
 		self.background = pygame.display.set_mode((super().get_WIDTH(), super().get_HEIGHT()))
 		self.background.fill(self.get_background())
@@ -34,8 +33,8 @@ class Main_Menu(default_window):
 	def main_menu(self):
 		# Title Box
 		pygame.draw.rect(self.background, (50, 50, 255), pygame.Rect(50, 20, 800, 100), 5, 5, 5, 5, 5, 5)
-		game_title = self.title_font.render("KILLER BUNNIES", True, (0, 0, 0), (100, 100, 255))
-		self.background.blit(game_title, (160, 35))
+		game_title = self.title_font.render("ROB", True, (0, 0, 0), (100, 100, 255))
+		self.background.blit(game_title, (450, self.get_HEIGHT()/10))
 
 		# Start Game Box
 		pygame.draw.rect(self.background, self.get_start_game_rect_color(), pygame.Rect(300, 175, 300, 90))
