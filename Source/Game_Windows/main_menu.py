@@ -23,8 +23,6 @@ class Main_Menu(default_window):
 		self.set_box_start(box_start)
 		self.set_box_end(box_end)
 
-		self.title_font = pygame.font.SysFont('C:\Windows\Fonts\CALISTBI.TTF', 50)
-		self.option_font = pygame.font.SysFont('Comic Sans MS', 40)
 		self.background = pygame.display.set_mode((super().get_WIDTH(), super().get_HEIGHT()))
 		self.background.fill(self.get_background())
 		pygame.display.set_caption(self.get_game_name())
@@ -32,7 +30,7 @@ class Main_Menu(default_window):
 	# Helpers
 	def main_menu(self):
 		# Title Box
-		pygame.draw.rect(self.background, (50, 50, 255), pygame.Rect(50, 20, 800, 100), 5, 5, 5, 5, 5, 5)
+		pygame.draw.rect(self.background, (50, 50, 255), pygame.Rect(0, 0, 800, 100), 5, 5, 5, 5, 5, 5)
 		game_title = self.title_font.render("ROB", True, (0, 0, 0), (100, 100, 255))
 		self.background.blit(game_title, (450, self.get_HEIGHT()/10))
 

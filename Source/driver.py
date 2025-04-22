@@ -1,8 +1,8 @@
 # Import Files/Modules
 from Game_Windows import main_menu
 from Game_Windows import default_window
+from Interactors import buttons
 import pygame
-
 
 pygame.init()
 
