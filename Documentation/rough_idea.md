@@ -11,6 +11,9 @@ A big ol' doc for what we are aiming for as a final project.
   - reccomended software: LibreSprite: https://libresprite.github.io/#!/
 ## sound design
 TRACKER MUSIC
+
+RETRO BLEEP BLOOPS
+
 - we make all of the sound assets ourselves
   - background/ambient music
   - SFX (e.g. hit sound, coin-grab sound, transition sound)
