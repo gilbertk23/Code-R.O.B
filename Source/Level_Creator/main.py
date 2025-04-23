@@ -8,6 +8,7 @@ def main():
 
 	# constants
 	SCALE = 2 
+	PLAYER_SCALE = 4
 	TILE_SIZE = 16*SCALE # scale images by a factor SCALE (source image sizes are all 16x16 px)
 	MARGIN = TILE_SIZE*2 # margin = border around play area
 	GRID_SIZE = 32 # how many cells in rows & columns
@@ -26,20 +27,38 @@ def main():
 	game_canvas = pygame.Surface((SCREEN_HEIGHT,SCREEN_WIDTH))
 
 	# load tile images from disk
-	black_square = pygame.image.load("Assets/black-square.png")
-	green_square = pygame.image.load("Assets/green-square.png")
-	cat_square = pygame.image.load("Assets/cat.png")
+	moon_square = pygame.image.load("Assets/moon-square.png")
+	light_slate_square = pygame.image.load("Assets/light-slate-square.png")
+	slate_square = pygame.image.load("Assets/slate-square.png")
+	# dark_slate_square = pygame.image.load("Assets/dark-slate-square.png")
+	# black_square = pygame.image.load("Assets/black-square.png")
+	# green_square = pygame.image.load("Assets/green-square.png")
+	# cat_square = pygame.image.load("Assets/cat.png")
+	player_16x = pygame.image.load("Assets/player-idle-1-16x.png")
+	player_32x = pygame.image.load("Assets/player-idle-1-32x.png")
 
 	# scale tiles
-	black_square = pygame.transform.scale(black_square, (TILE_SIZE,TILE_SIZE))
-	green_square = pygame.transform.scale(green_square, (TILE_SIZE,TILE_SIZE))
-	cat_square = pygame.transform.scale(cat_square, (TILE_SIZE,TILE_SIZE))
+	moon_square = pygame.transform.scale(moon_square, (TILE_SIZE,TILE_SIZE))
+	light_slate_square = pygame.transform.scale(light_slate_square, (TILE_SIZE,TILE_SIZE))
+	slate_square = pygame.transform.scale(slate_square, (TILE_SIZE,TILE_SIZE))
+	# dark_slate_square = pygame.transform.scale(dark_slate_square, (TILE_SIZE,TILE_SIZE))
+	# black_square = pygame.transform.scale(black_square, (TILE_SIZE,TILE_SIZE))
+	# green_square = pygame.transform.scale(green_square, (TILE_SIZE,TILE_SIZE))
+	# cat_square = pygame.transform.scale(cat_square, (TILE_SIZE,TILE_SIZE))
+	player_16x = pygame.transform.scale(player_16x, (TILE_SIZE*PLAYER_SCALE,TILE_SIZE*PLAYER_SCALE))
+	player_32x = pygame.transform.scale(player_32x, (TILE_SIZE*PLAYER_SCALE,TILE_SIZE*PLAYER_SCALE))
 
-	# placeholder map creation (eventually will load template from file)
+	# placeholder map creation (eventually will load map from file)
 	til = [
-		green_square,
-		black_square,
-		cat_square,
+		moon_square,
+		slate_square,
+		moon_square,
+		light_slate_square,
+		moon_square,
+		slate_square,
+		# green_square,
+		# black_square,
+		# cat_square,
 	]
 	tiles = []
 	for t in range(2000):
@@ -65,6 +84,10 @@ def main():
 				game_canvas.blit(tiles[i], ((TILE_SIZE*column)+MARGIN,(TILE_SIZE*row)+MARGIN))
 				i += 1
 		screen.blit(game_canvas, (0,0))
+
+
+		screen.blit(player_16x, ((TILE_SIZE*10),(TILE_SIZE*5)))
+		screen.blit(player_32x, ((TILE_SIZE*10),(TILE_SIZE*15)))
 
 		# < game logic goes here! >
 
