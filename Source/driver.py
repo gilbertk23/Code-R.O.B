@@ -11,8 +11,16 @@ test = map_generator()
 player = Player(10, 10)
 world = World(test.generate_map_array())
 
+
+
 def draw_window():  # Function for background arguments
     world.draw()
+    if player.Is_coliding:
+        test = map_generator()
+        testy = World(test.generate_map_array())
+        testy.draw()
+        player.Is_coliding = False
+
     player.update()
     pygame.display.update()  # Update game loop
 
@@ -27,7 +35,7 @@ def main():
                 run = False
 
 
-            draw_window()  # Call function
+        draw_window()  # Call function
 
     pygame.quit()  # quits the game loop and exits window
 

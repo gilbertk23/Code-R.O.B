@@ -37,6 +37,7 @@ class World:
 			map_generator().chest_block(self.tile_list, self.get_grid_size(), col_count, row_count)
 
 	def generate_textures(self):
+		pygame.Surface.fill(self.game_window, (0, 0, 0))
 		row_count = 0
 		for row in self.get_game_map():  # Iterate through each row
 			col_count = 0
@@ -44,10 +45,6 @@ class World:
 				self.map_textures(tile, row_count, col_count)
 				col_count += 1
 			row_count += 1
-
-	def reset_board(self):
-		map_generator().generate_map_array()
-		self.draw()
 
 	def draw(self):
 		for tile in self.tile_list:

@@ -69,7 +69,6 @@ class map_generator:
 		img_rect.y = row_count * GRID_SIZE  # Find y value of image
 		tile = (img, img_rect)  # Save tile as tuple
 		tile_list.append(tile)  # Adding tile to list
-		return tile_list
 
 	def chest_block(self, tile_list, GRID_SIZE, col_count, row_count):  # Tile 4
 		Clear_Block = pygame.image.load(os.path.join('Assets', 'Clear Block.png'))
@@ -79,7 +78,6 @@ class map_generator:
 		img_rect.y = row_count * GRID_SIZE  # Find y value of image
 		tile = (img, img_rect)  # Save tile as tuple
 		tile_list.append(tile)  # Adding tile to list
-		return tile_list
 
 	def get_row_size(self):
 		return self.set_row_size  # Returns the size of the map row size

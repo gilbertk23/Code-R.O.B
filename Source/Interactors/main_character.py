@@ -20,6 +20,7 @@ class Player:  # Create player class
 		self.height = self.image.get_height()
 		self.jumped = False
 		self.health = 0
+		self.Is_coliding = False
 
 		self.map = map_generator()
 		self.world = World(self.map.generate_map_array())
@@ -42,8 +43,8 @@ class Player:  # Create player class
 		# Check for collisions
 		for tile in self.map.generate_map_array():
 			if tile[0] > self.rect.x:
-				pygame.Surface.fill(Py_Window, (0, 0, 0))
-				self.world.reset_board()
+				self.Is_coliding = True
+
 
 				self.rect.x = 20
 				self.rect.y = 20
