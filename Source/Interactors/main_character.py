@@ -1,6 +1,7 @@
 import pygame
 import os
 from Source.Maps.map_generator import map_generator
+from Source.Maps.game_world import World
 
 WIDTH, HEIGHT = 900, 600  # Pygame Window Width and Height
 FPS = 60  # Sets the Frames Per Second for game
@@ -21,6 +22,7 @@ class Player:  # Create player class
 		self.health = 0
 
 		self.map = map_generator()
+		self.world = World(self.map.generate_map_array())
 
 
 
@@ -29,20 +31,23 @@ class Player:  # Create player class
 		dy = 0
 		key = pygame.key.get_pressed()
 		if key[pygame.K_a]:
-			dx -= 2
+			dx -= 5
 		if key[pygame.K_d]:
-			dx += 2
+			dx += 5
 		if key[pygame.K_w]:
-				dy -= 2
+				dy -= 5
 		if key[pygame.K_s]:
-			dy += 2
+			dy += 5
 
 		# Check for collisions
 		for tile in self.map.generate_map_array():
 			if tile[0] > self.rect.x:
+				pygame.Surface.fill(Py_Window, (0, 0, 0))
+				self.world.reset_board()
 
 				self.rect.x = 20
 				self.rect.y = 20
+
 		# Update Player Coordinates
 		self.rect.x += dx
 		self.rect.y += dy

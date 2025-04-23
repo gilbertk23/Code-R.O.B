@@ -27,7 +27,7 @@ def main():
                 run = False
 
 
-        draw_window()  # Call function
+            draw_window()  # Call function
 
     pygame.quit()  # quits the game loop and exits window
 

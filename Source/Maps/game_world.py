@@ -46,7 +46,6 @@ class World:
 			row_count += 1
 
 	def reset_board(self):
-		self.game_window.fill((0, 0, 0))
 		map_generator().generate_map_array()
 		self.draw()
 

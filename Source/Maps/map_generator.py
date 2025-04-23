@@ -34,6 +34,15 @@ class map_generator:
 		self.set_chest_num = random.randint(self.get_min_chests(), self.get_max_chests())
 
 	# Helpers
+	def clear_block(self, tile_list, GRID_SIZE, col_count, row_count):  # Tile 0
+		Dark_Block = pygame.image.load(os.path.join('Assets', 'Clear Block.png'))
+		img = pygame.transform.scale(Dark_Block, (GRID_SIZE, GRID_SIZE))  # Tranforming tile to size of grid
+		img_rect = img.get_rect()  # Convert image to rectangle
+		img_rect.x = col_count * GRID_SIZE  # Find x value of image
+		img_rect.y = row_count * GRID_SIZE  # Find y value of image
+		tile = (img, img_rect)  # Save tile as tuple
+		tile_list.append(tile)  # Adding tile to list
+
 	def border_block(self, tile_list, GRID_SIZE, col_count, row_count):  # Tile 1
 		Dark_Block = pygame.image.load(os.path.join('Assets', 'Dark Block.jpg'))
 		img = pygame.transform.scale(Dark_Block, (GRID_SIZE, GRID_SIZE))  # Tranforming tile to size of grid
@@ -150,7 +159,6 @@ class map_generator:
 		return middle_map  # Return middle map
 
 	def generate_map_array(self):
-		self.wipe_state()
 		map_array = []  # Instantiate map_array
 		for columns in range(self.get_col_size()):  # Iterate through the range of column size
 			map_array.append(self.generate_column_border())  # Append column border
@@ -160,16 +168,6 @@ class map_generator:
 			self.generate_chests(map_array)  # Plot Chests onto map array
 
 			return map_array  # Return middle map
-
-	def map_copy(self):
-		map_copy = self.generate_map_array()
-		return map_copy
-
-	def wipe_state(self):
-		self.set_row_size = random.randint(self.get_min_height(), self.get_max_height())
-		self.set_col_size = random.randint(self.get_min_width(), self.get_max_width())
-		self.set_chest_num = random.randint(self.get_min_chests(), self.get_max_chests())
-
 
 	# Function to print viewable array
 	def print_array(self):
