@@ -1,51 +1,52 @@
-class main_character: 
-	# Data Attributes
-	__texture = "Error"
-	__height = "Error"
-	__width = "Error"
-	__movement_speed = "Error"
+import pygame
+import os
+from Source.Maps.map_generator import map_generator
 
-	# Init
-	def __init__(self, texture, height, width, movement_speed): 
-		self.set_texture(texture)
-		self.set_height(height)
-		self.set_width(width)
-		self.set_movement_speed(movement_speed)
+WIDTH, HEIGHT = 900, 600  # Pygame Window Width and Height
+FPS = 60  # Sets the Frames Per Second for game
+Py_Window = pygame.display.set_mode((WIDTH, HEIGHT))  # Create py window
+pygame.display.set_caption("Game Platformer")  # Window Game Caption
 
-	# Helpers
+class Player:  # Create player class
+	def __init__(self, x, y):
+		Character = pygame.image.load(os.path.join('Assets', 'Player Sprite.png'))
+		Player_Width, Player_Height = 10, 20
+		self.image = pygame.transform.scale(Character, (Player_Width, Player_Height))
+		self.rect = self.image.get_rect()  # Turn character into rectangle
+		self.rect.x = x  # X position
+		self.rect.y = y  # Y position
+		self.width = self.image.get_width()
+		self.height = self.image.get_height()
+		self.jumped = False
+		self.health = 0
 
-	# Getters
-	def get_texture(self): 
-		return self.__texture
+		self.map = map_generator()
 
-	def get_height(self): 
-		return self.__height
 
-	def get_width(self): 
-		return self.__width
 
-	def get_movement_speed(self): 
-		return self.__movement_speed
+	def update(self):
+		dx = 0
+		dy = 0
+		key = pygame.key.get_pressed()
+		if key[pygame.K_a]:
+			dx -= 2
+		if key[pygame.K_d]:
+			dx += 2
+		if key[pygame.K_w]:
+				dy -= 2
+		if key[pygame.K_s]:
+			dy += 2
 
-	# Setters
-	def set_texture(self, texture): 
-		self.__texture = texture
+		# Check for collisions
+		for tile in self.map.generate_map_array():
+			if tile[0] > self.rect.x:
 
-	def set_height(self, height): 
-		self.__height = height
+				self.rect.x = 20
+				self.rect.y = 20
+		# Update Player Coordinates
+		self.rect.x += dx
+		self.rect.y += dy
 
-	def set_width(self, width): 
-		self.__width = width
-
-	def set_movement_speed(self, movement_speed): 
-		self.__movement_speed = movement_speed
-
-	# ToString
-	def __str__(self):
-		main_character_string = ""
-		main_character_string += (f"Main_Character Data Attributes-->\n\t"	
-			f"Texture: {self.get_texture()}\n\t"
-			f"Height: {self.get_height()}\n\t"
-			f"Width: {self.get_width()}\n\t"
-			f"Movement_Speed: {self.get_movement_speed()}\n\t")
-		return main_character_string
+		# Drawing Player onto screen
+		Py_Window.blit(self.image, self.rect)
+		# pygame.draw.rect(Py_Window, (255, 255, 255), self.rect, 2)
