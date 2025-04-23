@@ -1,10 +1,7 @@
 # Import Files/Modules
 import random
-
 import pygame
 import os
-
-
 
 class map_generator:
 	# Data Attributes
@@ -154,7 +151,6 @@ class map_generator:
 
 	def generate_map_array(self):
 		self.wipe_state()
-		print(self.get_col_size(), self.get_row_size())
 		map_array = []  # Instantiate map_array
 		for columns in range(self.get_col_size()):  # Iterate through the range of column size
 			map_array.append(self.generate_column_border())  # Append column border

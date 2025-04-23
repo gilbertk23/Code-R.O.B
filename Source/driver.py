@@ -26,6 +26,7 @@ def main():
             if event.type == pygame.QUIT:  # User quit window
                 run = False
 
+
         draw_window()  # Call function
 
     pygame.quit()  # quits the game loop and exits window
