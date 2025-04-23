@@ -1,28 +1,24 @@
 # Import Files/Modules
-from Game_Windows import main_menu
-from Game_Windows import default_window
-from Interactors import buttons
+from Source.Maps.game_world import game_world
+from Source.Maps.map_generator import map_generator
 import pygame
-
 pygame.init()
 
-Menu = main_menu.Main_Menu(900, 700, (100, 100, 255), r'C:\Windows\Fonts\comic.ttf', (0, 0, 0), (75, 75, 255), (100, 100, 255), (100, 100, 255), 0, 500, "KILLER BUNNIES")
-
 def main():
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
+    test = map_generator()
 
-            if event.type == pygame.MOUSEMOTION:
-                Menu.get_hover()
+    world = game_world()
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                Menu.get_click()
+    run = True
+    while run:
+        for event in pygame.event.get():  # For loop looks for events
+            if event.type == pygame.QUIT:  # User quit window
+                run = False
 
-        Menu.main_menu()
-        pygame.display.update()
+        world.draw_window()
 
+    pygame.quit()  # quits the game loop and exits window
 
 if __name__ == '__main__':
     main()
+
