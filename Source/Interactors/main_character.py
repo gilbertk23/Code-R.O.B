@@ -3,6 +3,7 @@ import os
 from Source.Maps.map_generator import map_generator
 from Source.Maps.game_world import World
 
+
 WIDTH, HEIGHT = 900, 600  # Pygame Window Width and Height
 FPS = 60  # Sets the Frames Per Second for game
 Py_Window = pygame.display.set_mode((WIDTH, HEIGHT))  # Create py window
@@ -43,6 +44,7 @@ class Player:  # Create player class
 		# Check for collisions
 		for tile in self.map.generate_map_array():
 			if tile[0] > self.rect.x:
+
 				self.Is_coliding = True
 
 
