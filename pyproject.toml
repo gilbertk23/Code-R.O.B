@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools >= 77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "roguelike_game"
+dynamic = ["version"]
+authors = [
+  { name="gilbertk23", email="147006709+gilbertk23@users.noreply.github.com" },
+]
+description = "Graphical Rogue-like Game"
+license = "MIT"
+license-files = ["LICENSE*"]
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Games/Entertainment",
+    "Topic :: Software Development :: Libraries :: pygame",
+    "Operating System :: OS Independent",
+]
+keywords = [
+    "rogue-like", "game"
+]
+dependencies = [
+    "pygame~=2.6.0",
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.urls]
+"Source" = "https://github.com/gilbertk23/cybr404project3"
+"Bug Tracker" = "https://github.com/gilbertk23/cybr404project3/issues"
+
+[tool.setuptools.dynamic]
+version = {attr = "roguelike_game.game.__version__"}
+
+[project.gui-scripts]
+run_roguelike_game = "roguelike_game.game:main"
+
+[tool.setuptools.package-data]
+roguelike_game = ["py.typed", "data/*", "lang/*", "fonts/*"]
+
+[tool.uv]
+package = true

@@ -1,7 +1,12 @@
+from __future__ import annotations
+
+__title__ = "Game Platformer"
+__version__ = "0.0.0"
+
 # Import Files/Modules
-from Source.Maps.game_world import World
-from Source.Maps.map_generator import map_generator
-from Source.Interactors.main_character import Player
+from roguelike_game.Maps.game_world import World
+from roguelike_game.Maps.map_generator import map_generator
+from roguelike_game.Interactors.main_character import Player
 import pygame
 import os
 
@@ -21,7 +26,7 @@ def main() -> None:
     pygame.init()
 
     screen = pygame.display.set_mode((WIDTH, HEIGHT))  # Create py window
-    pygame.display.set_caption("Game Platformer")  # Window Game Caption
+    pygame.display.set_caption(__title__)  # Window Game Caption
 
 
     player = Player(10, 10)
