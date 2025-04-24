@@ -31,7 +31,6 @@ class World:
         if tile == 4:  # Tile 3 = Clear Block
             self.map.chest_block(self.tile_list, self.get_grid_size(), col_count, row_count)
 
-    # types: Error running mypy: Unknown module: roguelike_game.Maps.game_world
     def generate_textures(self) -> None:
         row_count = 0
         for row in self.get_game_map():  # Iterate through each row
