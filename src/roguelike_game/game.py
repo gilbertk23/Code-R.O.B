@@ -4,11 +4,13 @@ __title__ = "Game Platformer"
 __version__ = "0.0.0"
 
 # Import Files/Modules
+import os
+
+import pygame
+
 from roguelike_game.Maps.game_world import World
 from roguelike_game.Maps.map_generator import map_generator
 from roguelike_game.Interactors.main_character import Player
-import pygame
-import os
 
 WIDTH, HEIGHT = 900, 600  # Pygame Window Width and Height
 FPS = 60  # Sets the Frames Per Second for game
@@ -17,14 +19,11 @@ FPS = 60  # Sets the Frames Per Second for game
 def draw_window(screen: pygame.Surface, world: World, player: Player) -> None:
     pygame.Surface.fill(screen, (0, 0, 0))
     world.draw(screen)
-    player.update()
+    player.update(screen)
 
     pygame.display.update()
 
-# Def main contains main game loop components only
-def main() -> None:
-    pygame.init()
-
+def run() -> None:
     screen = pygame.display.set_mode((WIDTH, HEIGHT))  # Create py window
     pygame.display.set_caption(__title__)  # Window Game Caption
 
@@ -43,7 +42,15 @@ def main() -> None:
         draw_window(screen, world, player)  # Call function
         clock.tick(FPS)  # Controls the speed of the while loop
 
-    pygame.quit()  # quits the game loop and exits window
+# Def main contains main game loop components only
+def main() -> None:
+    pygame.init()
+
+    try:
+        run()
+    finally:
+        # quits the game loop and exits window
+        pygame.quit()
 
 
 if __name__ == "__main__":  # Ensures code only runs file in file

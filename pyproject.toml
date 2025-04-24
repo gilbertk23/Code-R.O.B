@@ -47,7 +47,7 @@ version = {attr = "roguelike_game.game.__version__"}
 run_roguelike_game = "roguelike_game.game:main"
 
 [tool.setuptools.package-data]
-roguelike_game = ["py.typed", "data/*", "lang/*", "fonts/*"]
+roguelike_game = ["py.typed", "assets/*"]
 
 [tool.uv]
 package = true
