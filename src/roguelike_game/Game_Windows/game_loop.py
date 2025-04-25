@@ -1,61 +1,61 @@
+from __future__ import annotations
+
 # Import Files/Modules
-from Source.Maps.map_generator import map_generator
-from Source.Maps.game_world import World
-from Source.Interactors.main_character import Player
+# types: import-not-found error: Cannot find implementation or library stub for module named "pygame"
+# types: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
+# types: Another file has errors: '/home/samuel/Desktop/Github-Clones/Python-Roguelike-Fork/src/roguelike_game/game.py'
 import pygame
+
+from roguelike_game.Maps.game_world import World
+from roguelike_game.Maps.map_generator import map_generator
+from roguelike_game.Interactors.main_character import Player
+from roguelike_game.Game_Windows.default_window import Window
+
 
 class game_loop:
     # Data Attributes
-    __window_width = -1
-    __window_height = -1
-    __background = -1
-    __game_name = -1
-    __fps = -1
+    __slots__ = ("__fps", "window")
 
     # Init
-    def __init__(self, window_width=900, window_height=700, background=(0, 0, 0), game_name="ROB", fps=60):
-        self.set_window_width(window_width)
-        self.set_window_height(window_height)
-        self.set_background(background)
-        self.set_game_name(game_name)
+    def __init__(self, fps: int = 60) -> None:
         self.set_fps(fps)
 
-        self.game_window = pygame.display.set_mode((self.get_window_width(), self.get_window_height()))
-        self.game_window.fill(self.get_background())
-        pygame.display.set_caption(self.get_game_name())
+        self.window = Window()
+        # TODO: This shouldn't be neccicery, for some reason
+        # __init__ doesn't seem to be being run properly
+        self.window.screen = pygame.display.set_mode((900, 600))
+        self.window._Window__background = (0, 0, 0)
 
-        self.game_world = World(map_generator().generate_map_array())
-        self.player1 = Player(10, 10)
+    # Helpers
+
+    def draw_window(self, world: World, char: player) -> None:
+        pygame.Surface.fill(self.window.screen, self.window.get_background())
+        world.draw(self.window.screen)
+        char.update(self.window.screen)
+
+        pygame.display.update()
+
+    # types: Error running mypy: Command 'suggest' is only valid after a 'check' command (that produces no parse errors)
+    def run_game(self):
+        char = Player(0, 0)
+        world = World((map_generator().generate_map_array()))
+
+        clock = pygame.time.Clock()  # Control time of main function
+        run = True
+        while run:
+            clock.tick(self.get_fps())
+            for event in pygame.event.get():  # For loop looks for events
+                if event.type == pygame.QUIT:  # User quit window
+                    run = False
+
+            self.draw_window(world, char)  # Call function
 
     # Getters
-    def get_window_width(self):
-        return self.__window_width
-
-    def get_window_height(self):
-        return self.__window_height
-
-    def get_background(self):
-        return self.__background
-
-    def get_game_name(self):
-        return self.__game_name
-
-    def get_fps(self):
+    def get_fps(self) -> int:
         return self.__fps
 
     # Setters
-    def set_window_width(self, window_width):
-        self.__window_width = window_width
-
-    def set_window_height(self, window_height):
-        self.__window_height = window_height
-
-    def set_background(self, background):
-        self.__background = background
-
-    def set_game_name(self, game_name):
-        self.__game_name = game_name
-
-    def set_fps(self, fps):
+    def set_fps(self, fps: int) -> None:
         self.__fps = fps
+
     # To String
