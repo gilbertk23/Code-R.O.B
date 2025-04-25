@@ -5,7 +5,6 @@ from Source.Interactors.main_character import player
 from Source.Game_Windows.default_window import default_window
 import pygame
 
-
 class game_loop:
     # Data Attributes
     __fps = -1
@@ -15,20 +14,19 @@ class game_loop:
         self.set_fps(fps)
 
         self.window = default_window().run_window()
+        self.game_world = world(map_generator().generate_map_array())  # Generates new_map
+        self.main_character = player()
 
     # Helpers
 
     def draw_window(self, world: world, char: player) -> None:
         pygame.Surface.fill(self.window, (0, 0, 0))
         world.draw(self.window)
-        char.update_player()
+        char.update_player(world.get_tile_list())
         pygame.display.update()
 
     def run_game(self):
         pygame.init()
-
-        game_world = world((map_generator().generate_map_array()))
-        char = player(game_map=world.get_game_map(game_world))
 
         clock = pygame.time.Clock()  # Control time of main function
         run = True
@@ -38,7 +36,7 @@ class game_loop:
                 if event.type == pygame.QUIT:  # User quit window
                     run = False
 
-            self.draw_window(game_world, char)  # Call function
+            self.draw_window(self.game_world, self.main_character)  # Call function
 
         pygame.quit()  # quits the game loop and exits window
 

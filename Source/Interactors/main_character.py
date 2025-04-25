@@ -2,8 +2,6 @@ import pygame
 import os
 
 from Source.Game_Windows.default_window import default_window
-from Source.Maps.map_generator import map_generator
-
 
 class player:
 	# Data Attributes
@@ -34,6 +32,8 @@ class player:
 		# Get Window
 		self.game_window = default_window().run_window()
 
+		self.portal_active = False
+
 	# Helpers
 	def key_press(self):
 		key = pygame.key.get_pressed()
@@ -46,10 +46,16 @@ class player:
 		if key[pygame.K_s]:
 			self.set_y_pos(self.get_y_pos() + 1)
 
-	def update_player(self):
+	def update_player(self, tile_list):
 		self.key_press()
+		self.detect_collision(tile_list)
 		self.set_player_pos((self.get_x_pos(), self.get_y_pos()))
 		self.game_window.blit(self.image, (self.get_player_pos()))
+
+	def detect_collision(self, tile_list):
+		for tile in tile_list:
+			if self.get_x_pos() <= tile[1][0] / 20:
+				self.portal_active = True
 
 	# Getters
 	def get_x_pos(self):

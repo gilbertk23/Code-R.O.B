@@ -9,8 +9,8 @@ class world:
 	# Init
 	def __init__(self, game_map=[], tile_size=20):
 		self.set_game_map(game_map)
-
 		self.set_tile_size(tile_size)
+
 		self.tile_list = []
 
 		self.map = map_generator()
@@ -33,6 +33,9 @@ class world:
 	def draw(self, screen: pygame.Surface) -> None:
 		for tile in self.tile_list:
 			screen.blit(tile[0], tile[1])
+
+	def get_tile_list(self):
+		return self.tile_list
 
 	# Getters
 	def get_game_map(self):
