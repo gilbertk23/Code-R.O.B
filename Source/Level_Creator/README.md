@@ -1,16 +1,17 @@
 # Level creator
-Right now this is just a proof-of-concept that creates a grid of tiles, eventually this will be a level editor and be refactored into OOP principles.
+This has very limited functionality as of release, eventually this will be a fully-fledged level editor and be refactored into OOP principles.
 
 # current functionality: 
 - dynamic level display based on reading an array of tile IDs (see grid_instance variable)
 - reading mouse pointer position on occurence of click
 - key inputs 1,2,3,4,5,6,7,8,9,0
-	- currently doesn't do anything except print to the console that a key-press event has occured
+	- change currentlu selected tile to paint with
+- painting tiles with clicking *mostly* works (not entirely, fix in next branch)
 
 # TODO
-- add functionality for editing tiles (mouse-click changes tile to current selected tile; change tile selection with number keys;)
+- finalize functionality for editing tiles
 - add functionality for reading and writing map files
-- add `.levelgrid` file parsing capability (see [levelgrid docs](levelgrid_docs.md) for more info)
+	- add `.levelgrid` file parsing capability (see [levelgrid docs](levelgrid_docs.md) for more info)
 
 # ideas for gameplay key-map
 ## movement

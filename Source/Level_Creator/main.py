@@ -1,30 +1,16 @@
 import pygame
 
 def main():
-
-	### construct void grid ###
+	### user input ###
 	grid_size_input = int(input("Grid size (square, enter one integer):"))
-	grid_instance = []
-	for R in range(grid_size_input):
-		for C in range(grid_size_input):
-			grid_instance.append(".")
-		grid_instance.append("\n")
-	# print grid struct
-	print("Initial Grid:")
-	for i in grid_instance:
-		if i == "\n":
-			print()
-		else:
-			print(i, end="")
 
-	
 	### pygame initialization ###
 	pygame.init()
 	pygame.display.set_caption("R.O.B game")
 
 	### constants ###
-	SCALE = 3 
-	PLAYER_SCALE = 3
+	SCALE = 3 # factor to scale all assets by
+	PLAYER_SCALE = 1 # in case we decide we want the player to be bigger/smaller in the future
 	TILE_SIZE = 16*SCALE # scale images by a factor SCALE (source image sizes are all 16x16 px)
 	MARGIN = TILE_SIZE*2 # margin = border around play area
 	GRID_SIZE = grid_size_input # how many cells in rows & columns
@@ -82,6 +68,28 @@ def main():
 		"3": goal_tile,
 	}
 
+	### construct void grid ###
+	grid_instance = []
+	for R in range(grid_size_input):
+		for C in range(grid_size_input):
+			grid_instance.append(".")
+		# grid_instance.append("\n")
+	# print grid struct
+	print("@@ Initial Grid: @@")
+	num = -1
+	for i in grid_instance:
+		num += 1
+		if num % GRID_SIZE == 0:
+			print()
+		else:
+			print(i, end="")
+	# print("Initial Grid:")
+	# 			for i in grid_instance:
+	# 				if i == "\n":
+	# 					print()
+	# 				else:
+	# 					print(i, end="")
+
 	### game loop ###
 	# player_pos = (100,100)
 	# player_dimensions = (player_32x.get_rect()[2], player_32x.get_rect()[3])
@@ -89,10 +97,9 @@ def main():
 	# player_offset_x = player_dimensions[0]/2
 	# player_offset_y = player_dimensions[1]/2
 	selected_tile = "0"
-
 	running = True
 	while running:
-		# stores the (x,y) coordinates of mouse position into the variable as a tuple
+		# store the (x,y) coordinates of mouse position (as a tuple)
 		mouse_pos = pygame.mouse.get_pos()
 
 		### event handling ###
@@ -136,16 +143,27 @@ def main():
 						print("¡¡¡UNKNOWN SELECTION!!!")
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				print("MOUSE CLICK:: X:" + str(mouse_pos[0]) + " Y:" + str(mouse_pos[1]))
+				# NOTE: this doesn't work quite right. 
+				# it has some weird issues trying to get the tiles on the right and bottom edges. 
+				# I'm going to do some OOP refactoring and fix it in Level_Editor_v0.2
 				for row in range(GRID_SIZE):
 					for column in range(GRID_SIZE):
 						# next two commented lines -> thoughts for refactoring
 						# if mouse_pos[0] >= Tile.get_bounds(min_x) and mouse_pos[0] <= Tile.get_bounds(max_x):
 						# 	if mouse_pos[1] >= Tile.get_bounds(min_y) and mouse_pos[1] <= Tile.get_bounds(max_y):
-						if mouse_pos[0] >= (((TILE_SIZE*column)+MARGIN)-TILE_SIZE) and mouse_pos[0] <= ((TILE_SIZE*column)+MARGIN):
-							if mouse_pos[1] >= ((TILE_SIZE*row)-TILE_SIZE) and mouse_pos[1] <= (TILE_SIZE*row):
-								index = row + column
+						if mouse_pos[0] >= ((TILE_SIZE*column)+MARGIN-TILE_SIZE) and mouse_pos[0] <= ((TILE_SIZE*column)+MARGIN):
+							if mouse_pos[1] >= ((TILE_SIZE*row)+MARGIN-TILE_SIZE) and mouse_pos[1] <= ((TILE_SIZE*row)+MARGIN):
+								index = (row*GRID_SIZE) + column - (GRID_SIZE+1)
 								grid_instance[index] = selected_tile
-
+				# print grid struct
+				print("new Grid:")
+				num = -1
+				for i in grid_instance:
+					num += 1
+					if num % GRID_SIZE == 0:
+						print()
+					else:
+						print(i, end="")
 				# Old code from another of my projects, just a note for how things were done there:
 	            	# if the mouse_pos is clicked on the button
 		            # for btn in buttons.keys():
@@ -163,7 +181,6 @@ def main():
 			for column in range(GRID_SIZE):
 				game_canvas.blit(tile_catalogue[grid_instance[i]], ((TILE_SIZE*column)+MARGIN,(TILE_SIZE*row)+MARGIN))
 				i += 1
-			i += 1
 
 		### display game_canvas (map) ###
 		screen.blit(game_canvas, (0,0))

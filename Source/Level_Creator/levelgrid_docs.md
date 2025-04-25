@@ -3,6 +3,8 @@
 
 Seeing as they have no functionaliy, the rest of this document can be regarded as "hopes and dreams" instead of actual usable information.
 
+---
+
 HOW TO USE .levelgrid FILES
 
 # header

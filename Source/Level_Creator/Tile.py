@@ -1,3 +1,5 @@
+# NOTE: This is currently non-operational
+
 class Tile():
 	### Attributes ###
 	"""
