@@ -1,18 +1,18 @@
 # Import Files/Modules
 from Source.Maps.game_world import World
 from Source.Maps.map_generator import map_generator
-from Source.Interactors.main_character import Player
+from Source.Interactors.main_character import player
+from Source.Game_Windows.default_window import default_window
 import pygame
 import os
 
-WIDTH, HEIGHT = 900, 600  # Pygame Window Width and Height
-FPS = 60  # Sets the Frames Per Second for game
+window = default_window().run_window()
 
 
-def draw_window(screen: pygame.Surface, world: World, player: Player) -> None:
-    pygame.Surface.fill(screen, (0, 0, 0))
-    world.draw(screen)
-    player.update()
+def draw_window(window: window, world: World, char: player) -> None:
+    pygame.Surface.fill(window, (0, 0, 0))
+    world.draw(window)
+    char.update()
 
     pygame.display.update()
 
@@ -20,13 +20,8 @@ def draw_window(screen: pygame.Surface, world: World, player: Player) -> None:
 def main() -> None:
     pygame.init()
 
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))  # Create py window
-    pygame.display.set_caption("Game Platformer")  # Window Game Caption
-
-
-    player = Player(10, 10)
+    char = player()
     world = World((map_generator().generate_map_array()))
-
 
     clock = pygame.time.Clock()  # Control time of main function
     run = True
@@ -35,8 +30,7 @@ def main() -> None:
             if event.type == pygame.QUIT:  # User quit window
                 run = False
 
-        draw_window(screen, world, player)  # Call function
-        clock.tick(FPS)  # Controls the speed of the while loop
+        draw_window(window, world, char)  # Call function
 
     pygame.quit()  # quits the game loop and exits window
 

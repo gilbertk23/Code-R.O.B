@@ -1,60 +1,92 @@
 import pygame
 import os
-from Source.Maps.map_generator import map_generator
-from Source.Maps.game_world import World
+
+from Source.Game_Windows.default_window import default_window
 
 
-WIDTH, HEIGHT = 900, 600  # Pygame Window Width and Height
-FPS = 60  # Sets the Frames Per Second for game
-Py_Window = pygame.display.set_mode((WIDTH, HEIGHT))  # Create py window
-pygame.display.set_caption("Game Platformer")  # Window Game Caption
+class player:
+	# Data Attributes
+	__x_pos = -1
+	__y_pos = -1
+	__char_width = -1
+	__char_height = -1
+	__char_speed = -1
+	__char_health = -1
 
-class Player:  # Create player class
-	def __init__(self, x, y):
-		Character = pygame.image.load(os.path.join('Assets', 'Player Sprite.png'))
-		Player_Width, Player_Height = 10, 20
-		self.image = pygame.transform.scale(Character, (Player_Width, Player_Height))
-		self.rect = self.image.get_rect()  # Turn character into rectangle
-		self.rect.x = x  # X position
-		self.rect.y = y  # Y position
-		self.width = self.image.get_width()
-		self.height = self.image.get_height()
-		self.jumped = False
-		self.health = 0
-		self.Is_coliding = False
+	# Init
+	def __init__(self, x_pos=10, y_pos=10, char_width=10, char_height=10, char_speed=3, char_health=100):
+		self.set_x_pos(x_pos)
+		self.set_y_pos(y_pos)
+		self.set_char_width(char_width)
+		self.set_char_height(char_height)
+		self.set_char_speed(char_speed)
+		self.set_char_health(char_health)
 
-		self.map = map_generator()
-		self.world = World(self.map.generate_map_array())
+		# Set Player
+		self.character = pygame.image.load(os.path.join('Assets', 'Player Sprite.png'))
+		self.image = pygame.transform.scale(self.character, (char_width, char_height))
+		self.char_rect = self.image.get_rect()  # Turn character into rectangle
 
+		# Get Window
+		self.game_window = default_window().run_window()
 
-
+	# Helpers
 	def update(self):
 		dx = 0
 		dy = 0
 		key = pygame.key.get_pressed()
 		if key[pygame.K_a]:
-			dx -= 5
+			dx -= .1
 		if key[pygame.K_d]:
-			dx += 5
+			dx += .1
 		if key[pygame.K_w]:
-				dy -= 5
+				dy -= .1
 		if key[pygame.K_s]:
-			dy += 5
-
-		# Check for collisions
-		for tile in self.map.generate_map_array():
-			if tile[0] > self.rect.x:
-
-				self.Is_coliding = True
-
-
-				self.rect.x = 20
-				self.rect.y = 20
+			dy += .1
 
 		# Update Player Coordinates
-		self.rect.x += dx
-		self.rect.y += dy
+		self.set_x_pos(self.get_x_pos() + dx)
+		self.set_y_pos(self.get_y_pos() + dy)
 
 		# Drawing Player onto screen
-		Py_Window.blit(self.image, self.rect)
-		# pygame.draw.rect(Py_Window, (255, 255, 255), self.rect, 2)
+		self.game_window.blit(self.image, (self.get_x_pos(), self.get_y_pos()))
+
+	# Getters
+	def get_x_pos(self):
+		return self.__x_pos
+
+	def get_y_pos(self):
+		return self.__y_pos
+
+	def get_char_width(self):
+		return self.__char_width
+
+	def get_char_height(self):
+		return self.__char_height
+
+	def get_char_speed(self):
+		return self.__char_speed
+
+	def get_char_health(self):
+		return self.__char_health
+
+	# Setters
+	def set_x_pos(self, x_pos):
+		self.__x_pos = x_pos
+
+	def set_y_pos(self, y_pos):
+		self.__y_pos = y_pos
+
+	def set_char_width(self, char_width):
+		self.__char_width = char_width
+
+	def set_char_height(self, char_height):
+		self.__char_height = char_height
+
+	def set_char_speed(self, char_speed):
+		self.__char_speed = char_speed
+
+	def set_char_health(self, char_health):
+		self.__char_health = char_health
+
+	# To String

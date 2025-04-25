@@ -1,7 +1,7 @@
 # Import Files/Modules
 from Source.Maps.map_generator import map_generator
 from Source.Maps.game_world import World
-from Source.Interactors.main_character import Player
+from Source.Interactors.main_character import player
 import pygame
 
 class game_loop:
