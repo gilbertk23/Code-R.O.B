@@ -1,10 +1,13 @@
 from Source.Maps.map_generator import map_generator
-from Source.Maps.game_world import World
+from Source.Maps.game_world import world
+from Source.Interactors.main_character import player
+from Source.Game_Windows.game_loop import game_loop
+from Source.Game_Windows.default_window import default_window
 
 import unittest
 
 
-class MapGeneratorSettersGettersTester(unittest.TestCase):\
+class map_generator_setters_getters_tester(unittest.TestCase):
 
     # Example Setup
     def setUp(self):
@@ -83,14 +86,13 @@ class MapGeneratorSettersGettersTester(unittest.TestCase):\
         self.assertEqual(self.world.get_map_count(), 10)
 
 
-class GameWorldGeneratorSettersGettersTester(unittest.TestCase):
+class game_world_generator_setters_getters_tester(unittest.TestCase):
 
     # Example Setup
     def setUp(self):
         self.test = map_generator()
         self.test_array = self.test.generate_map_array()
-        self.world = World(self.test_array)
-
+        self.world = world(self.test_array)
 
     # Getters Testers
     def test_get_game_map(self):
@@ -128,3 +130,107 @@ class GameWorldGeneratorSettersGettersTester(unittest.TestCase):
     def test_set_grid_size(self):
         self.world.set_grid_size(25)
         self.assertEqual(self.world.get_grid_size(), 25)
+
+
+class main_character_setters_getters_tester(unittest.TestCase):
+
+    # Example Setup
+    def setUp(self):
+        self.player = player()
+
+    # Getters Testers
+    def test_get_x_pos(self):
+        self.assertEqual(self.player.get_x_pos(), 10)
+
+    def test_get_y_pos(self):
+        self.assertEqual(self.player.get_y_pos(), 10)
+
+    def test_get_char_width(self):
+        self.assertEqual(self.player.get_char_width(), 10)
+
+    def test_get_char_height(self):
+        self.assertEqual(self.player.get_char_height(), 10)
+
+    def test_get_char_speed(self):
+        self.assertEqual(self.player.get_char_speed(), 3)
+
+    def test_get_char_health(self):
+        self.assertEqual(self.player.get_char_health(), 100)
+
+    # Setters Tester
+    def test_set_x_pos(self):
+        self.player.set_x_pos(100)
+        self.assertEqual(self.player.get_x_pos(), 100)
+
+    def test_set_y_pos(self):
+        self.player.set_y_pos(100)
+        self.assertEqual(self.player.get_y_pos(), 100)
+
+    def test_set_char_width(self):
+        self.player.set_char_width(100)
+        self.assertEqual(self.player.get_char_width(), 100)
+
+    def test_set_char_height(self):
+        self.player.set_char_height(100)
+        self.assertEqual(self.player.get_char_height(), 100)
+
+    def test_set_char_speed(self):
+        self.player.set_char_speed(10)
+        self.assertEqual(self.player.get_char_speed(), 10)
+
+    def test_set_char_health(self):
+        self.player.set_char_health(1000)
+        self.assertEqual(self.player.get_char_health(), 1000)
+
+
+class game_loop_setters_getters_tester(unittest.TestCase):
+
+    # Example Setup
+    def setUp(self):
+        self.game_loop = game_loop()
+
+    # Getters Testers
+    def test_get_fps(self):
+        self.assertEqual(self.game_loop.get_fps(), 60)
+
+    # Setters Testers
+    def test_set_fps(self):
+        self.game_loop.set_fps(30)
+        self.assertEqual(self.game_loop.get_fps(), 30)
+
+
+class default_window_setters_getters_tester(unittest.TestCase):
+
+    # Example Setup
+    def setUp(self):
+        self.default_window = default_window()
+
+    # Getters Testers
+    def test_get_game_name(self):
+        self.assertEqual(self.default_window.get_game_name(), "ROB")
+
+    def test_get_window_width(self):
+        self.assertEqual(self.default_window.get_window_width(), 900)
+
+    def test_get_window_height(self):
+        self.assertEqual(self.default_window.get_window_height(), 700)
+
+    def test_get_background(self):
+        self.assertEqual(self.default_window.get_background(), (0, 0, 0))
+
+    # Setters Testers
+    def test_set_game_name(self):
+        self.default_window.set_game_name("LEBRON JAMES")
+        self.assertEqual(self.default_window.get_game_name(), "LEBRON JAMES")
+
+    def test_set_window_width(self):
+        self.default_window.set_window_width(500)
+        self.assertEqual(self.default_window.get_window_width(), 500)
+
+    def test_set_window_height(self):
+        self.default_window.set_window_height(1000)
+        self.assertEqual(self.default_window.get_window_height(), 1000)
+
+    def test_set_grid_size(self):
+        self.default_window.set_background((0, 1, 2))
+        self.assertEqual(self.default_window.get_background(), (0, 1, 2))
