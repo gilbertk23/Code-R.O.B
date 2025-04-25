@@ -10,6 +10,7 @@ Right now this is just a proof-of-concept that creates a grid of tiles, eventual
 # TODO
 - add functionality for editing tiles (mouse-click changes tile to current selected tile; change tile selection with number keys;)
 - add functionality for reading and writing map files
+- add `.levelgrid` file parsing capability (see [levelgrid docs](levelgrid_docs.md) for more info)
 
 # ideas for gameplay key-map
 ## movement
