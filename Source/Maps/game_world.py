@@ -1,5 +1,6 @@
 import pygame
 from Source.Maps.map_generator import map_generator
+from Source.Game_Windows.default_window import default_window
 
 class world:
 	# Data Attributes
@@ -18,6 +19,10 @@ class world:
 		self.generate_textures()
 
 	# Helpers
+	def reset_map(self):
+		new_world = world(map_generator().generate_map_array())
+		new_world.draw(default_window().run_window())
+
 	def map_textures(self, tile, row_count, col_count):
 		map_generator().set_blocks(tile, self.tile_list, self.get_tile_size(), col_count, row_count)
 

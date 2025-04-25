@@ -18,11 +18,16 @@ class game_loop:
         self.main_character = player()
 
     # Helpers
+    def generate_new_map(self, world, main_character):
+        if main_character.portal_active:
+            world.reset_map()
+            main_character.portal_active = False
 
-    def draw_window(self, world: world, char: player) -> None:
+    def draw_window(self, world: world, main_character: player) -> None:
         pygame.Surface.fill(self.window, (0, 0, 0))
         world.draw(self.window)
-        char.update_player(world.get_tile_list())
+        main_character.update_player(world.get_tile_list())
+        self.generate_new_map(world, main_character)
         pygame.display.update()
 
     def run_game(self):

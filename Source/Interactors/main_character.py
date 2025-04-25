@@ -14,7 +14,7 @@ class player:
 	__char_health = -1
 
 	# Init
-	def __init__(self, x_pos=10, y_pos=10, player_pos=(10, 10), char_width=10, char_height=10, char_speed=3, char_health=100, game_map=[]):
+	def __init__(self, x_pos=20, y_pos=20, player_pos=(10, 10), char_width=10, char_height=10, char_speed=3, char_health=100, game_map=[]):
 		self.set_x_pos(x_pos)
 		self.set_y_pos(y_pos)
 		self.set_player_pos(player_pos)
@@ -50,7 +50,7 @@ class player:
 		self.key_press()
 		self.detect_collision(tile_list)
 		self.set_player_pos((self.get_x_pos(), self.get_y_pos()))
-		self.game_window.blit(self.image, (self.get_player_pos()))
+		self.game_window.blit(self.image, self.get_player_pos())
 
 	def detect_collision(self, tile_list):
 		for tile in tile_list:
