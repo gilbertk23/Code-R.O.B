@@ -5,7 +5,7 @@ This has very limited functionality as of release, eventually this will be a ful
 - dynamic level display based on reading an array of tile IDs (see grid_instance variable)
 - reading mouse pointer position on occurence of click
 - key inputs 1,2,3,4,5,6,7,8,9,0
-	- change currentlu selected tile to paint with
+	- change currently selected tile to paint with
 - painting tiles with clicking *mostly* works (not entirely, fix in next branch)
 
 # TODO
