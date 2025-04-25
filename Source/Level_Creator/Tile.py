@@ -1,6 +1,8 @@
 # NOTE: This is currently non-operational
+#  https://www.geeksforgeeks.org/pygame-creating-sprites/
+import pygame
 
-class Tile():
+class Tile(pygame.sprite.Sprite):
 	### Attributes ###
 	"""
 	A class that holds a single tile of the map and its properties.
