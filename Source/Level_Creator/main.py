@@ -1,11 +1,10 @@
 import pygame
-import io
 
 def main():
-	grid_size_input = int(input("Grid size (square, enter one integer):"))
 
+	### construct void grid ###
+	grid_size_input = int(input("Grid size (square, enter one integer):"))
 	grid_instance = []
-	# construct void grid
 	for R in range(grid_size_input):
 		for C in range(grid_size_input):
 			grid_instance.append(".")
@@ -23,7 +22,7 @@ def main():
 	pygame.init()
 	pygame.display.set_caption("R.O.B game")
 
-	# constants
+	### constants ###
 	SCALE = 3 
 	PLAYER_SCALE = 3
 	TILE_SIZE = 16*SCALE # scale images by a factor SCALE (source image sizes are all 16x16 px)
@@ -43,7 +42,7 @@ def main():
 	screen = pygame.display.set_mode((SCREEN_HEIGHT, SCREEN_WIDTH))
 	game_canvas = pygame.Surface((SCREEN_HEIGHT,SCREEN_WIDTH))
 
-	# load tile images from disk
+	### load tile images from disk ###
 		# moon_square = pygame.image.load("Assets/moon-square.png")
 		# light_slate_square = pygame.image.load("Assets/light-slate-square.png")
 		# slate_square = pygame.image.load("Assets/slate-square.png")
@@ -53,15 +52,13 @@ def main():
 		# green_square = pygame.image.load("Assets/green-square.png")
 		# cat_square = pygame.image.load("Assets/cat.png")
 	player_32x = pygame.image.load("Assets/player-idle-1-32x.png")
-
 	void_tile = pygame.image.load("tile_assets/4_void.png")
 	wall_tile = pygame.image.load("tile_assets/0_wall.png")
 	grass_tile = pygame.image.load("tile_assets/1_grass.png")
 	door_tile = pygame.image.load("tile_assets/2_door.png")
 	goal_tile = pygame.image.load("tile_assets/3_goal.png")
-	
 
-	# scale tiles
+	### scale tiles ###
 		# moon_square = pygame.transform.scale(moon_square, (TILE_SIZE,TILE_SIZE))
 		# light_slate_square = pygame.transform.scale(light_slate_square, (TILE_SIZE,TILE_SIZE))
 		# slate_square = pygame.transform.scale(slate_square, (TILE_SIZE,TILE_SIZE))
@@ -86,72 +83,80 @@ def main():
 	}
 
 	### game loop ###
-	player_pos = (100,100)
-	player_dimensions = (player_32x.get_rect()[2], player_32x.get_rect()[3])
-	player_offset_x = player_dimensions[0]/2
-	player_offset_y = player_dimensions[1]/2
-	selected_tile = ""
+	# player_pos = (100,100)
+	# player_dimensions = (player_32x.get_rect()[2], player_32x.get_rect()[3])
+	# get offset to center of player
+	# player_offset_x = player_dimensions[0]/2
+	# player_offset_y = player_dimensions[1]/2
+	selected_tile = "0"
 
 	running = True
 	while running:
 		# stores the (x,y) coordinates of mouse position into the variable as a tuple
 		mouse_pos = pygame.mouse.get_pos()
 
-		# event handling
+		### event handling ###
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				running = False
 			if event.type == pygame.KEYDOWN:
 				# tile selection -> 1,2,3,4,5,6,7,8,9,0
-				if event.key == pygame.K_1:
-					print("SELECTION: 1_grass")
-					selected_tile = "1_grass.png"
-				if event.key == pygame.K_2:
-					print("SELECTION: 2_door")
-					selected_tile = "2_door.png"
-				if event.key == pygame.K_3:
-					print("SELECTION: 3_goal")
-					selected_tile = "3_goal.png"
-				if event.key == pygame.K_4:
-					print("SELECTION: 4_void")
-					selected_tile = "4_void.png"
-				if event.key == pygame.K_5:
-					print("SELECTION: 5")
-					# selected_tile = "1_grass.png"
-				if event.key == pygame.K_6:
-					print("SELECTION: 6")
-					# selected_tile = "1_grass.png"
-				if event.key == pygame.K_7:
-					print("SELECTION: 7")
-					# selected_tile = "1_grass.png"
-				if event.key == pygame.K_8:
-					print("SELECTION: 8")
-					# selected_tile = "1_grass.png"
-				if event.key == pygame.K_9:
-					print("SELECTION: 9")
-					# selected_tile = "1_grass.png"
-				if event.key == pygame.K_0:
-					print("SELECTION: 0_wall")
-					selected_tile = "0_wall.png"
+				match(event.key):
+					case pygame.K_1:
+						print("SELECTION: 1_grass")
+						selected_tile = "1"
+					case pygame.K_2:
+						print("SELECTION: 2_door")
+						selected_tile = "2"
+					case pygame.K_3:
+						print("SELECTION: 3_goal")
+						selected_tile = "3"
+					case pygame.K_4:
+						print("SELECTION: 4_void")
+						selected_tile = "."
+					# case pygame.K_5:
+					# 	print("SELECTION: 5")
+					# 	# selected_tile = tile_catalogue["5"]
+					# case pygame.K_6:
+					# 	print("SELECTION: 6")
+					# 	# selected_tile = tile_catalogue["6"]
+					# case pygame.K_7:
+					# 	print("SELECTION: 7")
+					# 	# selected_tile = tile_catalogue["7"]
+					# case pygame.K_8:
+					# 	print("SELECTION: 8")
+					# 	# selected_tile = tile_catalogue["8"]
+					# case pygame.K_9:
+					# 	print("SELECTION: 9")
+						# selected_tile = tile_catalogue["9"]
+					case pygame.K_0:
+						print("SELECTION: 0_wall")
+						selected_tile = "0"
+					case _:
+						print("¡¡¡UNKNOWN SELECTION!!!")
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				print("MOUSE CLICK:: X:" + str(mouse_pos[0]) + " Y:" + str(mouse_pos[1]))
-				#  new class Tile
-				# bounds  (max_x, max_y) 
-						# (min_x, min_y)
-				# collision_action
-				# id
-				# type (char, relates to grid_instance[])
+				for row in range(GRID_SIZE):
+					for column in range(GRID_SIZE):
+						# next two commented lines -> thoughts for refactoring
+						# if mouse_pos[0] >= Tile.get_bounds(min_x) and mouse_pos[0] <= Tile.get_bounds(max_x):
+						# 	if mouse_pos[1] >= Tile.get_bounds(min_y) and mouse_pos[1] <= Tile.get_bounds(max_y):
+						if mouse_pos[0] >= (((TILE_SIZE*column)+MARGIN)-TILE_SIZE) and mouse_pos[0] <= ((TILE_SIZE*column)+MARGIN):
+							if mouse_pos[1] >= ((TILE_SIZE*row)-TILE_SIZE) and mouse_pos[1] <= (TILE_SIZE*row):
+								index = row + column
+								grid_instance[index] = selected_tile
 
-            	# if the mouse_pos is clicked on the button
-	            # for btn in buttons.keys():
-	            #     if buttons[btn].get_pos_x() <= mouse_pos[0] <= (buttons[btn].get_pos_x() + buttons[btn].get_width()) and \
-	            #         buttons[btn].get_pos_y() <= mouse_pos[1] <= (buttons[btn].get_pos_y() + buttons[btn].get_height()):
-	                    # 🡹🡹 check if mouse_pos X and Y positions are within button bounds 🡹🡹
+				# Old code from another of my projects, just a note for how things were done there:
+	            	# if the mouse_pos is clicked on the button
+		            # for btn in buttons.keys():
+		            #     if buttons[btn].get_pos_x() <= mouse_pos[0] <= (buttons[btn].get_pos_x() + buttons[btn].get_width()) and \
+		            #         buttons[btn].get_pos_y() <= mouse_pos[1] <= (buttons[btn].get_pos_y() + buttons[btn].get_height()):
+		                    # 🡹🡹 check if mouse_pos X and Y positions are within button bounds 🡹🡹
 
-		# clear previous frame
+		### clear previous frame ###
 		screen.fill(COLORS["white"])
 
-		# render map
+		### render map ###
 		i = 0
 		new_tile = ""
 		for row in range(GRID_SIZE):
@@ -160,19 +165,22 @@ def main():
 				i += 1
 			i += 1
 
+		### display game_canvas (map) ###
 		screen.blit(game_canvas, (0,0))
 
-		# display player
+		### display player ###
 		# screen.blit(player_32x, ((player_pos[0]-player_offset_x),(player_pos[1]-player_offset_y)))
 
+		### game logic ###
 		# < game logic goes here! >
 
-		# push frame to screen
+		### push frame to screen ###
 		pygame.display.update()
 
-	# no longer running, quit application
+	### no longer running, quit application ###
 	pygame.quit()
 	exit()
 
+### conditional execution of main() ###
 if __name__ == '__main__':
 	main()
