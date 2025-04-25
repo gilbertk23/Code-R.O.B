@@ -7,4 +7,6 @@ The following standards and practices will be effect throughout the entire proje
 - Comments must be utilized for each major function
 - All functions should have one and only one purpose (no multifunctionality), be no longer than ten lines long
   - Note: This excludes constructors and two-string functions
-- Programs should follow proper OOP etiquette.
+- Programs should follow proper OOP etiquette
+- Tiles on the game map will be 16x16 pixels
+- Sprites (players, items) on the game map will be 32x32 pixels
