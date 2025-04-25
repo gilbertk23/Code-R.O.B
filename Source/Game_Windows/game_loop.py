@@ -1,5 +1,5 @@
 # Import Files/Modules
-from Source.Maps.game_world import World
+from Source.Maps.game_world import world
 from Source.Maps.map_generator import map_generator
 from Source.Interactors.main_character import player
 from Source.Game_Windows.default_window import default_window
