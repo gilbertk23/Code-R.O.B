@@ -1,5 +1,7 @@
 import pygame
 
+# version: 0.2
+
 def main():
 	### user input ###
 	grid_size_input = int(input("Grid size (square, enter one integer):"))
