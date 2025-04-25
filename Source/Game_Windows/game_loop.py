@@ -18,7 +18,7 @@ class game_loop:
 
     # Helpers
 
-    def draw_window(self, world: World, char: player) -> None:
+    def draw_window(self, world: world, char: player) -> None:
         pygame.Surface.fill(self.window, (0, 0, 0))
         world.draw(self.window)
         char.update()
