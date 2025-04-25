@@ -34,48 +34,24 @@ class map_generator:
 		self.set_chest_num = random.randint(self.get_min_chests(), self.get_max_chests())
 
 	# Helpers
-	def clear_block(self, tile_list, GRID_SIZE, col_count, row_count):  # Tile 0
-		Dark_Block = pygame.image.load(os.path.join('Assets', 'Clear Block.png'))
-		img = pygame.transform.scale(Dark_Block, (GRID_SIZE, GRID_SIZE))  # Tranforming tile to size of grid
-		img_rect = img.get_rect()  # Convert image to rectangle
-		img_rect.x = col_count * GRID_SIZE  # Find x value of image
-		img_rect.y = row_count * GRID_SIZE  # Find y value of image
-		tile = (img, img_rect)  # Save tile as tuple
-		tile_list.append(tile)  # Adding tile to list
+	def get_map_blocks(self, block_type):
+		map_blocks = {0: 'Clear Block.png',
+					  1: 'Dark Block.jpg',
+					  2: 'Grey Block.jpg',
+					  3: 'grass.png',
+					  4: 'Clear Block.png'}
 
-	def border_block(self, tile_list, GRID_SIZE, col_count, row_count):  # Tile 1
-		Dark_Block = pygame.image.load(os.path.join('Assets', 'Dark Block.jpg'))
-		img = pygame.transform.scale(Dark_Block, (GRID_SIZE, GRID_SIZE))  # Tranforming tile to size of grid
-		img_rect = img.get_rect()  # Convert image to rectangle
-		img_rect.x = col_count * GRID_SIZE  # Find x value of image
-		img_rect.y = row_count * GRID_SIZE  # Find y value of image
-		tile = (img, img_rect)  # Save tile as tuple
-		tile_list.append(tile)  # Adding tile to list
+		return map_blocks[block_type]
 
-	def portal_block(self, tile_list, GRID_SIZE, col_count, row_count):  # Tile 2
-		Grey_Block = pygame.image.load(os.path.join('Assets', 'Grey Block.jpg'))
-		img = pygame.transform.scale(Grey_Block, (GRID_SIZE, GRID_SIZE))  # Tranforming tile to size of grid
-		img_rect = img.get_rect()  # Convert image to rectangle
-		img_rect.x = col_count * GRID_SIZE  # Find x value of image
-		img_rect.y = row_count * GRID_SIZE  # Find y value of imag
-		tile = (img, img_rect)  # Save tile as tuple
-		tile_list.append(tile)  # Adding tile to list
+	def set_blocks(self, tile_type, tile_list, grid_size, col_count, row_count):
+		block_type = pygame.image.load(os.path.join('Assets', self.get_map_blocks(tile_type)))
+		self.set_image_block(block_type, tile_list, grid_size, col_count, row_count)
 
-	def floor_block(self, tile_list, GRID_SIZE, col_count, row_count):  # Tile 3
-		Grass_Block = pygame.image.load(os.path.join('Assets', 'grass.png'))
-		img = pygame.transform.scale(Grass_Block, (GRID_SIZE, GRID_SIZE))  # Tranforming tile to size of grid
+	def set_image_block(self, block_type, tile_list, grid_size, col_count, row_count):
+		img = pygame.transform.scale(block_type, (grid_size, grid_size))
 		img_rect = img.get_rect()  # Convert image to rectangle
-		img_rect.x = col_count * GRID_SIZE  # Find x value of image
-		img_rect.y = row_count * GRID_SIZE  # Find y value of image
-		tile = (img, img_rect)  # Save tile as tuple
-		tile_list.append(tile)  # Adding tile to list
-
-	def chest_block(self, tile_list, GRID_SIZE, col_count, row_count):  # Tile 4
-		Clear_Block = pygame.image.load(os.path.join('Assets', 'Clear Block.png'))
-		img = pygame.transform.scale(Clear_Block, (GRID_SIZE, GRID_SIZE))  # Tranforming tile to size of grid
-		img_rect = img.get_rect()  # Convert image to rectangle
-		img_rect.x = col_count * GRID_SIZE  # Find x value of image
-		img_rect.y = row_count * GRID_SIZE  # Find y value of image
+		img_rect.x = col_count * grid_size  # Find x value of image
+		img_rect.y = row_count * grid_size  # Find y value of image
 		tile = (img, img_rect)  # Save tile as tuple
 		tile_list.append(tile)  # Adding tile to list
 
@@ -106,7 +82,8 @@ class map_generator:
 
 	def generate_chests(self, map_array):
 		for columns in self.get_chest_pos():  # Iterate through columns on the chest positions
-			map_array[columns[1]][columns[0]] = 4  # If available set position to chest block
+			if map_array[columns[1]][columns[0]] == 3:  # Check to see if position is available
+				map_array[columns[1]][columns[0]] = 4  # If available set position to chest block
 
 		return map_array  # Return map array
 

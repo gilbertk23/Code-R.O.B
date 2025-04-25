@@ -4,13 +4,13 @@ from Source.Maps.map_generator import map_generator
 class world:
 	# Data Attributes
 	__game_map = []
-	__grid_size = -1
+	__tile_size = -1
 
 	# Init
-	def __init__(self, game_map, grid_size=20):
+	def __init__(self, game_map=[], tile_size=20):
 		self.set_game_map(game_map)
 
-		self.set_grid_size(grid_size)
+		self.set_tile_size(tile_size)
 		self.tile_list = []
 
 		self.map = map_generator()
@@ -19,14 +19,7 @@ class world:
 
 	# Helpers
 	def map_textures(self, tile, row_count, col_count):
-		if tile == 1:  # Tile 1 = Border Block
-			map_generator().border_block(self.tile_list, self.get_grid_size(), col_count, row_count)
-		if tile == 2:  # Tile 2 = Portal Block
-			map_generator().portal_block(self.tile_list, self.get_grid_size(), col_count, row_count)
-		if tile == 3:  # Tile 4 = Dirt block
-			map_generator().floor_block(self.tile_list, self.get_grid_size(), col_count, row_count)
-		if tile == 4:  # Tile 3 = Clear Block
-			map_generator().chest_block(self.tile_list, self.get_grid_size(), col_count, row_count)
+		map_generator().set_blocks(tile, self.tile_list, self.get_tile_size(), col_count, row_count)
 
 	def generate_textures(self):
 		row_count = 0
@@ -45,12 +38,12 @@ class world:
 	def get_game_map(self):
 		return self.__game_map
 
-	def get_grid_size(self):
-		return self.__grid_size
+	def get_tile_size(self):
+		return self.__tile_size
 
 	# Setters
 	def set_game_map(self, game_map):
 		self.__game_map = game_map
 
-	def set_grid_size(self, grid_size):
-		self.__grid_size = grid_size
+	def set_tile_size(self, tile_size):
+		self.__tile_size = tile_size

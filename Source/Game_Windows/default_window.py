@@ -9,7 +9,6 @@ class default_window:
 	__background = (-1, -1, -1)
 
 	# Init
-
 	def __init__(self, game_name="ROB", window_width=900, window_height=700, background=(0, 0, 0)):
 		self.set_game_name(game_name)
 		self.set_window_width(window_width)

@@ -21,15 +21,14 @@ class game_loop:
     def draw_window(self, world: world, char: player) -> None:
         pygame.Surface.fill(self.window, (0, 0, 0))
         world.draw(self.window)
-        char.update()
-
+        char.update_player()
         pygame.display.update()
 
     def run_game(self):
         pygame.init()
 
-        char = player()
-        world = World((map_generator().generate_map_array()))
+        game_world = world((map_generator().generate_map_array()))
+        char = player(game_map=world.get_game_map(game_world))
 
         clock = pygame.time.Clock()  # Control time of main function
         run = True
@@ -39,7 +38,7 @@ class game_loop:
                 if event.type == pygame.QUIT:  # User quit window
                     run = False
 
-            self.draw_window(world, char)  # Call function
+            self.draw_window(game_world, char)  # Call function
 
         pygame.quit()  # quits the game loop and exits window
 
