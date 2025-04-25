@@ -21,5 +21,5 @@ currently being worked on:
 - [Rough Idea](/Documentation/rough_idea.md)
 
 
-## Tile Grid Proof of Concept
+## Level Editor
 - [Level_Creator](/Source/Level_Creator)
