@@ -1,7 +1,7 @@
 import pygame
 from Source.Maps.map_generator import map_generator
 
-class World:
+class world:
 	# Data Attributes
 	__game_map = []
 	__grid_size = -1
