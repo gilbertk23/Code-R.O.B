@@ -48,18 +48,18 @@ def main():
 
 	# tile selector dict used in game loop
 	tile_catalogue = {
-		".": void_tile,
-		"0": wall_tile,
-		"1": floor_tile,
-		"2": door_tile,
-		"3": goal_tile,
+		"0": void_tile,
+		"1": wall_tile,
+		"2": floor_tile,
+		"3": door_tile,
+		"4": goal_tile,
 	}
 
 	### construct void grid ###
 	grid_instance = []
 	for R in range(grid_size_input):
 		for C in range(grid_size_input):
-			grid_instance.append(".")
+			grid_instance.append("0")
 
 	# print grid struct
 	print("@@ Initial Grid: @@")
@@ -90,21 +90,21 @@ def main():
 			if event.type == pygame.KEYDOWN:
 				# tile selection -> 1,2,3,4,5,6,7,8,9,0
 				match(event.key):
+					case pygame.K_0:
+						print("SELECTION: void_tile")
+						selected_tile = "0"
 					case pygame.K_1:
-						print("SELECTION: 1_floor")
+						print("SELECTION: wall_tile")
 						selected_tile = "1"
 					case pygame.K_2:
-						print("SELECTION: 2_door")
+						print("SELECTION: floor_tile")
 						selected_tile = "2"
 					case pygame.K_3:
-						print("SELECTION: 3_goal")
+						print("SELECTION: door_tile")
 						selected_tile = "3"
 					case pygame.K_4:
-						print("SELECTION: 4_void")
-						selected_tile = "."
-					case pygame.K_0:
-						print("SELECTION: 0_wall")
-						selected_tile = "0"
+						print("SELECTION: goal_tile")
+						selected_tile = "4"
 					case _:
 						print("¡¡¡UNKNOWN SELECTION!!!")
 			if event.type == pygame.MOUSEBUTTONDOWN:
