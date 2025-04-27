@@ -31,41 +31,26 @@ def main():
 	game_canvas = pygame.Surface((SCREEN_HEIGHT,SCREEN_WIDTH))
 
 	### load tile images from disk ###
-		# moon_square = pygame.image.load("Assets/moon-square.png")
-		# light_slate_square = pygame.image.load("Assets/light-slate-square.png")
-		# slate_square = pygame.image.load("Assets/slate-square.png")
-		# player_16x = pygame.image.load("Assets/player-idle-1-16x.png")
-		# dark_slate_square = pygame.image.load("Assets/dark-slate-square.png")
-		# black_square = pygame.image.load("Assets/black-square.png")
-		# green_square = pygame.image.load("Assets/green-square.png")
-		# cat_square = pygame.image.load("Assets/cat.png")
 	player_32x = pygame.image.load("Assets/player-idle-1-32x.png")
 	void_tile = pygame.image.load("tile_assets/4_void.png")
 	wall_tile = pygame.image.load("tile_assets/0_wall.png")
-	grass_tile = pygame.image.load("tile_assets/1_grass.png")
+	floor_tile = pygame.image.load("tile_assets/floor_metal_1.png")
 	door_tile = pygame.image.load("tile_assets/2_door.png")
 	goal_tile = pygame.image.load("tile_assets/3_goal.png")
 
 	### scale tiles ###
-		# moon_square = pygame.transform.scale(moon_square, (TILE_SIZE,TILE_SIZE))
-		# light_slate_square = pygame.transform.scale(light_slate_square, (TILE_SIZE,TILE_SIZE))
-		# slate_square = pygame.transform.scale(slate_square, (TILE_SIZE,TILE_SIZE))
-		# player_16x = pygame.transform.scale(player_16x, (TILE_SIZE*PLAYER_SCALE,TILE_SIZE*PLAYER_SCALE))
-		# dark_slate_square = pygame.transform.scale(dark_slate_square, (TILE_SIZE,TILE_SIZE))
-		# black_square = pygame.transform.scale(black_square, (TILE_SIZE,TILE_SIZE))
-		# green_square = pygame.transform.scale(green_square, (TILE_SIZE,TILE_SIZE))
-		# cat_square = pygame.transform.scale(cat_square, (TILE_SIZE,TILE_SIZE))
 	player_32x = pygame.transform.scale(player_32x, (TILE_SIZE*PLAYER_SCALE,TILE_SIZE*PLAYER_SCALE))
 	void_tile = pygame.transform.scale(void_tile, (TILE_SIZE,TILE_SIZE))
 	wall_tile = pygame.transform.scale(wall_tile, (TILE_SIZE,TILE_SIZE))
-	grass_tile = pygame.transform.scale(grass_tile, (TILE_SIZE,TILE_SIZE))
+	floor_tile = pygame.transform.scale(floor_tile, (TILE_SIZE,TILE_SIZE))
 	door_tile = pygame.transform.scale(door_tile, (TILE_SIZE,TILE_SIZE))
 	goal_tile = pygame.transform.scale(goal_tile, (TILE_SIZE,TILE_SIZE))
 
+	# tile selector dict used in game loop
 	tile_catalogue = {
 		".": void_tile,
 		"0": wall_tile,
-		"1": grass_tile,
+		"1": floor_tile,
 		"2": door_tile,
 		"3": goal_tile,
 	}
@@ -75,7 +60,7 @@ def main():
 	for R in range(grid_size_input):
 		for C in range(grid_size_input):
 			grid_instance.append(".")
-		# grid_instance.append("\n")
+
 	# print grid struct
 	print("@@ Initial Grid: @@")
 	num = -1
@@ -85,17 +70,11 @@ def main():
 			print()
 		else:
 			print(i, end="")
-	# print("Initial Grid:")
-	# 			for i in grid_instance:
-	# 				if i == "\n":
-	# 					print()
-	# 				else:
-	# 					print(i, end="")
 
 	### game loop ###
 	# player_pos = (100,100)
 	# player_dimensions = (player_32x.get_rect()[2], player_32x.get_rect()[3])
-	# get offset to center of player
+	## get offset to center of player
 	# player_offset_x = player_dimensions[0]/2
 	# player_offset_y = player_dimensions[1]/2
 	selected_tile = "0"
@@ -112,7 +91,7 @@ def main():
 				# tile selection -> 1,2,3,4,5,6,7,8,9,0
 				match(event.key):
 					case pygame.K_1:
-						print("SELECTION: 1_grass")
+						print("SELECTION: 1_floor")
 						selected_tile = "1"
 					case pygame.K_2:
 						print("SELECTION: 2_door")
@@ -123,21 +102,6 @@ def main():
 					case pygame.K_4:
 						print("SELECTION: 4_void")
 						selected_tile = "."
-					# case pygame.K_5:
-					# 	print("SELECTION: 5")
-					# 	# selected_tile = tile_catalogue["5"]
-					# case pygame.K_6:
-					# 	print("SELECTION: 6")
-					# 	# selected_tile = tile_catalogue["6"]
-					# case pygame.K_7:
-					# 	print("SELECTION: 7")
-					# 	# selected_tile = tile_catalogue["7"]
-					# case pygame.K_8:
-					# 	print("SELECTION: 8")
-					# 	# selected_tile = tile_catalogue["8"]
-					# case pygame.K_9:
-					# 	print("SELECTION: 9")
-						# selected_tile = tile_catalogue["9"]
 					case pygame.K_0:
 						print("SELECTION: 0_wall")
 						selected_tile = "0"
