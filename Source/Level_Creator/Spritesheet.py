@@ -1,6 +1,5 @@
 import pygame
 import json
-from Tile import Tile
 
 class Spritesheet:
 	__spritesheet_file = "NONE" # filename.png
