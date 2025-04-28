@@ -1,7 +1,7 @@
 import pygame
 from Spritesheet import Spritesheet
 
-# version: 0.2
+# version: 0.1
 
 def main():
 	### user input ###
