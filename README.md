@@ -3,11 +3,6 @@ Our repository for CYBR 404's third project.
 
 # Project Index
 
-> [!IMPORTANT]
-> ***REFACTORING NOTICE***
-> 
-> Refactoring of the main branch is scheduled to occur between the hours of **9:00PM and 11:00PM CDT** on **2025-04-27** (Sunday)
-
 Here's how our code is stored currently:
 - Branch `main`
   - Gavin's code for procedural level generation ([`Source/driver.py`](Source/driver.py)).
