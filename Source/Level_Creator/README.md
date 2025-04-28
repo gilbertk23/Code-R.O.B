@@ -14,7 +14,7 @@ This has very limited functionality as of now, eventually this will be a fully-f
 # current functionality: 
 - dynamic level display based on reading an array of tile IDs (see grid_instance variable)
 - reading mouse pointer position on occurence of click
-- key inputs 1,2,3,4,5,6,7,8,9,0
+- key inputs -> number keys
 	- change currently selected tile to paint with
 - painting tiles with clicking *mostly* works (bottom and right edges are broken, fix in next branch)
 
@@ -27,3 +27,6 @@ W S A D 🡺 movement
 / 🡺 attack? (because it's "slash" for slashing?)
 
 I think it should be keyboard-based, I don't see much reason for the player to click on things.
+
+# Spritesheets
+Spritesheets must have an associated JSON file containing metadata for the contained sprites. The metadata file must have the same name as the spritesheet it describes. [See documentation](spritesheet_metadata_docs.md).

@@ -11,9 +11,10 @@ class Tile(pygame.sprite.Sprite):
 	@param type: the identifying char that is parsed for image loading (see levelgrid_docs.md for more info on this).
 	@param bounds: the X and Y bounding coordinates of the tile.
 	@param collision_action: string identifying what should happen when the player collides with this tile, see documentation for list of collision actions (TODO).
+	@param image: the image uwu
 	"""
 	__id = -1
-	__type = "."
+	__type = "NONE"
 	__bounds = {
 		"max_x": -1,
 		"max_y": -1,
@@ -24,8 +25,15 @@ class Tile(pygame.sprite.Sprite):
 
 
 	### Constructors ###
-	def __init__(id, type, bounds, collision_action):
-		pass
+	def __init__(id, type, bounds, collision_action, image):
+		self.set_id(id)
+		self.set_type(type)
+		self.set_bounds(bounds)
+		self.set_collision_action(collision_action)
+
+		# targets for refactoring
+		self.image = image
+		self.mask = pygame.mask.from_surface(self.image) # init collision mask, improves performance for collision detection >> https://www.pygame.org/docs/ref/sprite.html#pygame.sprite.collide_mask
 
 	### Helpers ###
 

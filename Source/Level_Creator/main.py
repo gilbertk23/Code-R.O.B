@@ -1,4 +1,5 @@
 import pygame
+from Spritesheet import Spritesheet
 
 # version: 0.2
 
@@ -32,51 +33,56 @@ def main():
 
 	### load tile images from disk ###
 	player_32x = pygame.image.load("Assets/player-idle-1-32x.png")
-	void_tile = pygame.image.load("tile_assets/4_void.png")
-	wall_tile = pygame.image.load("tile_assets/0_wall.png")
-	floor_tile = pygame.image.load("tile_assets/floor_metal_1.png")
-	door_tile = pygame.image.load("tile_assets/2_door.png")
-	goal_tile = pygame.image.load("tile_assets/3_goal.png")
+	# void_tile = pygame.image.load("tile_assets/4_void.png")
+	# wall_tile = pygame.image.load("tile_assets/0_wall.png")
+	# floor_tile = pygame.image.load("tile_assets/floor_metal_1.png")
+	# door_tile = pygame.image.load("tile_assets/2_door.png")
+	# goal_tile = pygame.image.load("tile_assets/3_goal.png")
 
 	### scale tiles ###
 	player_32x = pygame.transform.scale(player_32x, (TILE_SIZE*PLAYER_SCALE,TILE_SIZE*PLAYER_SCALE))
-	void_tile = pygame.transform.scale(void_tile, (TILE_SIZE,TILE_SIZE))
-	wall_tile = pygame.transform.scale(wall_tile, (TILE_SIZE,TILE_SIZE))
-	floor_tile = pygame.transform.scale(floor_tile, (TILE_SIZE,TILE_SIZE))
-	door_tile = pygame.transform.scale(door_tile, (TILE_SIZE,TILE_SIZE))
-	goal_tile = pygame.transform.scale(goal_tile, (TILE_SIZE,TILE_SIZE))
+	# void_tile = pygame.transform.scale(void_tile, (TILE_SIZE,TILE_SIZE))
+	# wall_tile = pygame.transform.scale(wall_tile, (TILE_SIZE,TILE_SIZE))
+	# floor_tile = pygame.transform.scale(floor_tile, (TILE_SIZE,TILE_SIZE))
+	# door_tile = pygame.transform.scale(door_tile, (TILE_SIZE,TILE_SIZE))
+	# goal_tile = pygame.transform.scale(goal_tile, (TILE_SIZE,TILE_SIZE))
 
 	# tile selector dict used in game loop
-	tile_catalogue = {
-		"0": void_tile,
-		"1": wall_tile,
-		"2": floor_tile,
-		"3": door_tile,
-		"4": goal_tile,
-	}
+	spritesheet = Spritesheet("tile_assets/test_spritesheet.png", "tile_assets/test_metadata.json", TILE_SIZE)
+	tile_catalogue = spritesheet.parse()
+
 
 	### construct void grid ###
+	# thoughts
+		# grid_instance = [
+		# 	[ # row 0
+		# 		0, # col 0; id 0
+		# 		0, # col 1; id 0
+		# 		0, # col 2; id 0
+		# 	],
+		# 	[ # row 1
+		# 		0, # col 0; id 0
+		# 		1, # col 1; id 1
+		# 		0, # col 2; id 0
+		# 	],
+		# ]
 	grid_instance = []
 	for R in range(grid_size_input):
+		grid_instance.append([])
 		for C in range(grid_size_input):
-			grid_instance.append("0")
+			grid_instance[R].append("0")
 
 	# print grid struct
 	print("@@ Initial Grid: @@")
-	num = -1
-	for i in grid_instance:
-		num += 1
-		if num % GRID_SIZE == 0:
-			print()
-		else:
-			print(i, end="")
+	print_grid_log(grid_instance)
+
 
 	### game loop ###
-	# player_pos = (100,100)
-	# player_dimensions = (player_32x.get_rect()[2], player_32x.get_rect()[3])
-	## get offset to center of player
-	# player_offset_x = player_dimensions[0]/2
-	# player_offset_y = player_dimensions[1]/2
+		# player_pos = (100,100)
+		# player_dimensions = (player_32x.get_rect()[2], player_32x.get_rect()[3])
+		## get offset to center of player
+		# player_offset_x = player_dimensions[0]/2
+		# player_offset_y = player_dimensions[1]/2
 	selected_tile = "0"
 	running = True
 	while running:
@@ -94,42 +100,26 @@ def main():
 						print("SELECTION: void_tile")
 						selected_tile = "0"
 					case pygame.K_1:
-						print("SELECTION: wall_tile")
+						print("SELECTION: floor_tile")
 						selected_tile = "1"
 					case pygame.K_2:
-						print("SELECTION: floor_tile")
+						print("SELECTION: door_tile")
 						selected_tile = "2"
 					case pygame.K_3:
-						print("SELECTION: door_tile")
+						print("SELECTION: wall_tile")
 						selected_tile = "3"
-					case pygame.K_4:
-						print("SELECTION: goal_tile")
-						selected_tile = "4"
 					case _:
 						print("¡¡¡UNKNOWN SELECTION!!!")
 			if event.type == pygame.MOUSEBUTTONDOWN:
 				print("MOUSE CLICK:: X:" + str(mouse_pos[0]) + " Y:" + str(mouse_pos[1]))
-				# NOTE: this doesn't work quite right. 
-				# it has some weird issues trying to get the tiles on the right and bottom edges. 
-				# I'm going to do some OOP refactoring and fix it in Level_Editor_v0.2
 				for row in range(GRID_SIZE):
 					for column in range(GRID_SIZE):
-						# next two commented lines -> thoughts for refactoring
-						# if mouse_pos[0] >= Tile.get_bounds(min_x) and mouse_pos[0] <= Tile.get_bounds(max_x):
-						# 	if mouse_pos[1] >= Tile.get_bounds(min_y) and mouse_pos[1] <= Tile.get_bounds(max_y):
-						if mouse_pos[0] >= ((TILE_SIZE*column)+MARGIN-TILE_SIZE) and mouse_pos[0] <= ((TILE_SIZE*column)+MARGIN):
-							if mouse_pos[1] >= ((TILE_SIZE*row)+MARGIN-TILE_SIZE) and mouse_pos[1] <= ((TILE_SIZE*row)+MARGIN):
-								index = (row*GRID_SIZE) + column - (GRID_SIZE+1)
-								grid_instance[index] = selected_tile
+						if mouse_pos[0] >= ((TILE_SIZE*column)+MARGIN) and mouse_pos[0] <= ((TILE_SIZE*column)+MARGIN+TILE_SIZE):
+							if mouse_pos[1] >= ((TILE_SIZE*row)+MARGIN) and mouse_pos[1] <= ((TILE_SIZE*row)+MARGIN+TILE_SIZE):
+								grid_instance[row][column] = selected_tile
 				# print grid struct
 				print("new Grid:")
-				num = -1
-				for i in grid_instance:
-					num += 1
-					if num % GRID_SIZE == 0:
-						print()
-					else:
-						print(i, end="")
+				print_grid_log(grid_instance)
 				# Old code from another of my projects, just a note for how things were done there:
 	            	# if the mouse_pos is clicked on the button
 		            # for btn in buttons.keys():
@@ -141,11 +131,16 @@ def main():
 		screen.fill(COLORS["white"])
 
 		### render map ###
+
+		
+
+
+
 		i = 0
 		new_tile = ""
 		for row in range(GRID_SIZE):
 			for column in range(GRID_SIZE):
-				game_canvas.blit(tile_catalogue[grid_instance[i]], ((TILE_SIZE*column)+MARGIN,(TILE_SIZE*row)+MARGIN))
+				game_canvas.blit(tile_catalogue[grid_instance[row][column]], ((TILE_SIZE*column)+MARGIN,(TILE_SIZE*row)+MARGIN))
 				i += 1
 
 		### display game_canvas (map) ###
@@ -163,6 +158,14 @@ def main():
 	### no longer running, quit application ###
 	pygame.quit()
 	exit()
+
+
+def print_grid_log(grid_instance):
+	for r in grid_instance:
+		print()
+		for c in r:
+			print(c, end="")
+	print()
 
 ### conditional execution of main() ###
 if __name__ == '__main__':
