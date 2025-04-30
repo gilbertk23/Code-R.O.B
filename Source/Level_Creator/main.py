@@ -1,4 +1,5 @@
 import pygame
+import json
 from Spritesheet import Spritesheet
 
 # version: 0.2
@@ -33,39 +34,17 @@ def main():
 
 	### load tile images from disk ###
 	player_32x = pygame.image.load("Assets/player-idle-1-32x.png")
-	# void_tile = pygame.image.load("tile_assets/4_void.png")
-	# wall_tile = pygame.image.load("tile_assets/0_wall.png")
-	# floor_tile = pygame.image.load("tile_assets/floor_metal_1.png")
-	# door_tile = pygame.image.load("tile_assets/2_door.png")
-	# goal_tile = pygame.image.load("tile_assets/3_goal.png")
 
 	### scale tiles ###
 	player_32x = pygame.transform.scale(player_32x, (TILE_SIZE*PLAYER_SCALE,TILE_SIZE*PLAYER_SCALE))
-	# void_tile = pygame.transform.scale(void_tile, (TILE_SIZE,TILE_SIZE))
-	# wall_tile = pygame.transform.scale(wall_tile, (TILE_SIZE,TILE_SIZE))
-	# floor_tile = pygame.transform.scale(floor_tile, (TILE_SIZE,TILE_SIZE))
-	# door_tile = pygame.transform.scale(door_tile, (TILE_SIZE,TILE_SIZE))
-	# goal_tile = pygame.transform.scale(goal_tile, (TILE_SIZE,TILE_SIZE))
 
-	# tile selector dict used in game loop
-	spritesheet = Spritesheet("tile_assets/test_spritesheet.png", "tile_assets/test_metadata.json", TILE_SIZE)
+	# tile catalogue dict used in game loop for asset rendering
+	spritesheet_file = "tile_assets/test_spritesheet.png"
+	spritesheet_metadata_file = "tile_assets/test_spritesheet.json"
+	spritesheet = Spritesheet(spritesheet_file, spritesheet_metadata_file, TILE_SIZE)
 	tile_catalogue = spritesheet.parse()
 
-
 	### construct void grid ###
-	# thoughts
-		# grid_instance = [
-		# 	[ # row 0
-		# 		0, # col 0; id 0
-		# 		0, # col 1; id 0
-		# 		0, # col 2; id 0
-		# 	],
-		# 	[ # row 1
-		# 		0, # col 0; id 0
-		# 		1, # col 1; id 1
-		# 		0, # col 2; id 0
-		# 	],
-		# ]
 	grid_instance = []
 	for R in range(grid_size_input):
 		grid_instance.append([])
@@ -108,6 +87,12 @@ def main():
 					case pygame.K_3:
 						print("SELECTION: wall_tile")
 						selected_tile = "3"
+					case pygame.K_s:
+						print("¡¡SAVE MAP!!")
+						save_map(grid_instance)
+					case pygame.K_l:
+						print("¡¡LOAD MAP (wip)!!")
+						save_map(grid_instance)
 					case _:
 						print("¡¡¡UNKNOWN SELECTION!!!")
 			if event.type == pygame.MOUSEBUTTONDOWN:
@@ -120,22 +105,11 @@ def main():
 				# print grid struct
 				print("new Grid:")
 				print_grid_log(grid_instance)
-				# Old code from another of my projects, just a note for how things were done there:
-	            	# if the mouse_pos is clicked on the button
-		            # for btn in buttons.keys():
-		            #     if buttons[btn].get_pos_x() <= mouse_pos[0] <= (buttons[btn].get_pos_x() + buttons[btn].get_width()) and \
-		            #         buttons[btn].get_pos_y() <= mouse_pos[1] <= (buttons[btn].get_pos_y() + buttons[btn].get_height()):
-		                    # 🡹🡹 check if mouse_pos X and Y positions are within button bounds 🡹🡹
 
 		### clear previous frame ###
 		screen.fill(COLORS["white"])
 
 		### render map ###
-
-		
-
-
-
 		i = 0
 		new_tile = ""
 		for row in range(GRID_SIZE):
@@ -166,6 +140,27 @@ def print_grid_log(grid_instance):
 		for c in r:
 			print(c, end="")
 	print()
+
+def save_map(grid_instance, spritesheet_file):
+	# TODO:
+		# get user input for level name
+		# save spritesheet reference (filename)
+
+	new_map = {
+		"name": "test_level",
+		"tile_map": grid_instance,
+		"tile_spritesheet": spritesheet_file
+	}
+	file = json.dumps(new_map, indent=4)
+	with open("test_level.json", "w") as f:
+		f.write(file)
+
+def load_map()
+	# TODO:
+		# select what map to load (filesystem dialogue?)
+		# parse selected json file
+		# load data into variables and pass back to main()
+	pass
 
 ### conditional execution of main() ###
 if __name__ == '__main__':
