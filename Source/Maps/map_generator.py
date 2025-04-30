@@ -142,6 +142,7 @@ class map_generator:
 
 			self.generate_chests(map_array)  # Plot Chests onto map array
 
+			print(map_array)
 			return map_array  # Return middle map
 
 	# Function to print viewable array

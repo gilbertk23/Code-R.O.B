@@ -25,19 +25,18 @@ class game_loop:
         self.text = self.font.render('CODE: ROB', True, (255, 0, 0))
 
     # Helpers
-    def generate_new_map(self):
+    def generate_new_map(self, game_world):
         if self.main_character.portal_active:
-            self.game_world.reset_map()
+            game_world.reset_map()
             self.main_character.portal_active = False
-            pygame.display.update()
 
-    def draw_window(self, main_character: player) -> None:
+    def draw_window(self, main_character: player, game_world: world) -> None:
         pygame.Surface.fill(self.window, (255, 255, 0))
         pygame.draw.rect(self.window, (255, 0, 0), (100, 100, default_window().get_window_width() - 200, default_window().get_window_height() - 200))
         self.window.blit(self.text, (default_window().get_window_width() / 2.7, default_window().get_window_height() / 20))
-        self.game_world.draw(self.window)
-        main_character.update_player(self.game_world.get_tile_list())
-        self.generate_new_map()
+        game_world.draw(self.window)
+        main_character.update_player(game_world.get_tile_list())
+        self.generate_new_map(game_world)
         pygame.display.update()
 
     def run_game(self):
@@ -51,7 +50,7 @@ class game_loop:
                 if event.type == pygame.QUIT:  # User quit window
                     run = False
 
-            self.draw_window(self.main_character)  # Call function
+            self.draw_window(self.main_character, self.game_world)  # Call function
 
         pygame.quit()  # quits the game loop and exits window
 
