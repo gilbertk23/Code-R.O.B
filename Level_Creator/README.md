@@ -2,7 +2,16 @@
 
 This has very limited functionality as of now, eventually this will be a fully-fledged level editor and be refactored into OOP principles.
 
-# planned features for this release:
+## current functionality: 
+
+- dynamic level display based on reading an array of tile IDs (see grid_instance variable)
+- painting tiles with clicking
+	- reading mouse pointer position on occurence of click
+- key inputs -> number keys
+	- change currently selected tile to paint with
+- level saving (press "s") (currently no option to name level)
+
+## planned features:
 
 - refactor into OOP
 	- Tile class
@@ -12,14 +21,6 @@ This has very limited functionality as of now, eventually this will be a fully-f
 	- entity placement (e.g. collectable items, enemies)
 	- maps are readable and writable via JSON files
 		- custom parsing (see [levelgrid docs](levelgrid_docs.md) for more info)
-
-# current functionality: 
-
-- dynamic level display based on reading an array of tile IDs (see grid_instance variable)
-- painting tiles with clicking
-	- reading mouse pointer position on occurence of click
-- key inputs -> number keys
-	- change currently selected tile to paint with
 
 ## tile grid values
 
