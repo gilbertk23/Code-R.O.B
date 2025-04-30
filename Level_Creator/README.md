@@ -10,7 +10,7 @@ This has very limited functionality as of now, eventually this will be a fully-f
 - key inputs -> number keys
 	- change currently selected tile to paint with
 - level saving (press "s") (currently no option to name level)
-- level loading (hypothetically, it doesn't work *well*)
+- level loading (hypothetically, at least. It doesn't work *well*)
 
 ## planned features:
 
