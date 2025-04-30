@@ -1,8 +1,12 @@
 # Import Files/Modules
+from turtledemo.penrose import start
+
+from Source.Game_Windows.main_menu import main_menu
 from Source.Maps.game_world import world
 from Source.Maps.map_generator import map_generator
 from Source.Interactors.main_character import player
 from Source.Game_Windows.default_window import default_window
+from Source.Assets.preset_maps import start_map
 import pygame
 
 pygame.init()
@@ -25,19 +29,28 @@ class game_loop:
         self.text = self.font.render('CODE: ROB', True, (255, 0, 0))
 
     # Helpers
-    def generate_new_map(self, game_world):
-        if self.main_character.portal_active:
-            game_world.reset_map()
-            self.main_character.portal_active = False
+    def generate_new_map(self):
+        new_map = self.game_world.reset_map()
+        self.main_character.portal_active = False
+        return new_map
 
-    def draw_window(self, main_character: player, game_world: world) -> None:
+    def draw_window(self, main_character: player) -> None:
         pygame.Surface.fill(self.window, (255, 255, 0))
         pygame.draw.rect(self.window, (255, 0, 0), (100, 100, default_window().get_window_width() - 200, default_window().get_window_height() - 200))
         self.window.blit(self.text, (default_window().get_window_width() / 2.7, default_window().get_window_height() / 20))
-        game_world.draw(self.window)
-        main_character.update_player(game_world.get_tile_list())
-        self.generate_new_map(game_world)
+        self.generate_new_map().draw(self.window)
+        main_character.update_player(self.game_world.get_tile_list())
         pygame.display.update()
+
+    def map_levels(self):
+        game_world = []
+        if map_generator.get_map_count == 1:
+            game_world = start_map()
+
+        elif self.main_character.portal_active:
+            game_world = self.generate_new_map()
+        return game_world
+
 
     def run_game(self):
         pygame.init()
@@ -50,7 +63,7 @@ class game_loop:
                 if event.type == pygame.QUIT:  # User quit window
                     run = False
 
-            self.draw_window(self.main_character, self.game_world)  # Call function
+            self.draw_window(self.main_character)  # Call function
 
         pygame.quit()  # quits the game loop and exits window
 

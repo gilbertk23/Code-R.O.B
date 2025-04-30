@@ -17,7 +17,7 @@ class map_generator:
 	__map_count = "Error"
 
 	# Init
-	def __init__(self, min_width=10, max_width=20, min_height=10, max_height=20, min_enemies=0, max_enemies=30, min_chests=0, max_chests=10, current_score=0, map_count=0):
+	def __init__(self, min_width=10, max_width=20, min_height=10, max_height=20, min_enemies=0, max_enemies=30, min_chests=0, max_chests=10, current_score=0, map_count=1):
 		self.set_min_width(min_width)
 		self.set_max_width(max_width)
 		self.set_min_height(min_height)
@@ -142,7 +142,6 @@ class map_generator:
 
 			self.generate_chests(map_array)  # Plot Chests onto map array
 
-			print(map_array)
 			return map_array  # Return middle map
 
 	# Function to print viewable array
