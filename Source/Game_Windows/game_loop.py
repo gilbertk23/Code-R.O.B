@@ -16,7 +16,10 @@ class game_loop:
         self.set_fps(fps)
 
         self.window = default_window().run_window()
-        self.game_world = world(map_generator().generate_map_array())  # Generates new_map
+        """
+        self.generated_map = map_generator()  # Generates new_map
+        self.game_world = world(self.generated_map.generate_map_array())
+        """
         self.main_character = player()
 
         # Set Font
@@ -27,7 +30,7 @@ class game_loop:
     # Helpers
     def generate_new_map(self):
         if self.main_character.portal_active:
-            self.game_world.reset_map()
+            self.get_game_window().reset_map()
             self.main_character.portal_active = False
             pygame.display.update()
 
@@ -35,10 +38,23 @@ class game_loop:
         pygame.Surface.fill(self.window, (255, 255, 0))
         pygame.draw.rect(self.window, (255, 0, 0), (100, 100, default_window().get_window_width() - 200, default_window().get_window_height() - 200))
         self.window.blit(self.text, (default_window().get_window_width() / 2.7, default_window().get_window_height() / 20))
-        self.game_world.draw(self.window)
-        main_character.update_player(self.game_world.get_tile_list())
-        self.generate_new_map()
+        self.get_game_window().draw(self.window)
+        main_character.update_player(self.get_game_window().get_tile_list())
+      #  self.generate_new_map()
         pygame.display.update()
+
+    def get_game_window(self):
+        game_map = map_generator()
+        print(game_map.get_map_count())
+        if game_map.get_map_count() == 1:
+            print("Potato")
+            game_map.set_map_count(10)
+            game_map = world(game_map.generate_map_array())
+
+        else:
+            print(game_map.get_map_count())
+            print("donkey")
+        return game_map
 
     def run_game(self):
         pygame.init()
