@@ -11,7 +11,6 @@ This has very limited functionality as of now, eventually this will be a fully-f
 - fully-fledged level editing
 	- entity placement (e.g. collectable items, enemies)
 	- maps are readable and writable via JSON files
-		- custom parsing (see [levelgrid docs](levelgrid_docs.md) for more info)
 
 # current functionality: 
 
@@ -20,6 +19,8 @@ This has very limited functionality as of now, eventually this will be a fully-f
 	- reading mouse pointer position on occurence of click
 - key inputs -> number keys
 	- change currently selected tile to paint with
+- map can be saved to file (JSON)
+	- press "s"
 
 # ideas for gameplay key-map
 
