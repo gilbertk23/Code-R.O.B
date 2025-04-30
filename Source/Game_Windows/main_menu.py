@@ -20,6 +20,7 @@ class main_menu:
 		self.window = pygame.display.set_mode((screen_width, screen_height))
 		self.window.fill(background)
 		pygame.display.set_caption("Rob")
+		pygame.draw.rect(self.window, (255, 0, 0), pygame.Rect(23, 23, 230, 230), 4, 4, 4, 4, 2, 3)
 
 	# Helpers
 

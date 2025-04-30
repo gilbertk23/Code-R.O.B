@@ -22,6 +22,8 @@ class world:
 	def reset_map(self):
 		new_world = world(map_generator().generate_map_array())
 		new_world.draw(default_window().run_window())
+		self.map.set_map_count(self.map.get_map_count() + 1)
+		print(f"Map Count: {self.map.get_map_count()}")
 
 	def map_textures(self, tile, row_count, col_count):
 		map_generator().set_blocks(tile, self.tile_list, self.get_tile_size(), col_count, row_count)
@@ -37,7 +39,9 @@ class world:
 
 	def draw(self, screen: pygame.Surface) -> None:
 		for tile in self.tile_list:
-			screen.blit(tile[0], tile[1])
+			start_x_pos = tile[1][0] + 100
+			start_y_pos = tile[1][1] + 100
+			screen.blit(tile[0], [start_x_pos, start_y_pos])
 
 	def get_tile_list(self):
 		return self.tile_list

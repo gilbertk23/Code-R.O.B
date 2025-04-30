@@ -9,16 +9,23 @@ class default_window:
 	__background = (-1, -1, -1)
 
 	# Init
-	def __init__(self, game_name="ROB", window_width=900, window_height=700, background=(0, 0, 0)):
+	def __init__(self, game_name="ROB", window_width=900, window_height=700, background=(255, 255, 0)):
 		self.set_game_name(game_name)
 		self.set_window_width(window_width)
 		self.set_window_height(window_height)
 		self.set_background(background)
 
+		# Set Font
+		self.font = pygame.font.Font('freesansbold.ttf', 30)
+
+		self.text = self.font.render('CODE: ROB', True, (255, 0, 0))
+
 	# Helpers
 	def run_window(self):
 		game_window = pygame.display.set_mode((self.get_window_width(), self.get_window_height()))  # Init window
 		game_window.fill(self.get_background())  # Set background
+		pygame.draw.rect(game_window, (255, 0, 0), (100, 100, self.get_window_width() - 200, self.get_window_height() - 200))
+		game_window.blit(self.text,(self.get_window_width() / 2.7, self.get_window_height() / 20))
 		pygame.display.set_caption(self.get_game_name())  # Set the name
 		return game_window  # Return game_window
 

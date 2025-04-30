@@ -5,6 +5,8 @@ from Source.Interactors.main_character import player
 from Source.Game_Windows.default_window import default_window
 import pygame
 
+pygame.init()
+
 class game_loop:
     # Data Attributes
     __fps = -1
@@ -17,17 +19,25 @@ class game_loop:
         self.game_world = world(map_generator().generate_map_array())  # Generates new_map
         self.main_character = player()
 
-    # Helpers
-    def generate_new_map(self, world, main_character):
-        if main_character.portal_active:
-            world.reset_map()
-            main_character.portal_active = False
+        # Set Font
+        self.font = pygame.font.Font('freesansbold.ttf', 30)
 
-    def draw_window(self, world: world, main_character: player) -> None:
-        pygame.Surface.fill(self.window, (0, 0, 0))
-        world.draw(self.window)
-        main_character.update_player(world.get_tile_list())
-        self.generate_new_map(world, main_character)
+        self.text = self.font.render('CODE: ROB', True, (255, 0, 0))
+
+    # Helpers
+    def generate_new_map(self):
+        if self.main_character.portal_active:
+            self.game_world.reset_map()
+            self.main_character.portal_active = False
+            pygame.display.update()
+
+    def draw_window(self, main_character: player) -> None:
+        pygame.Surface.fill(self.window, (255, 255, 0))
+        pygame.draw.rect(self.window, (255, 0, 0), (100, 100, default_window().get_window_width() - 200, default_window().get_window_height() - 200))
+        self.window.blit(self.text, (default_window().get_window_width() / 2.7, default_window().get_window_height() / 20))
+        self.game_world.draw(self.window)
+        main_character.update_player(self.game_world.get_tile_list())
+        self.generate_new_map()
         pygame.display.update()
 
     def run_game(self):
@@ -41,7 +51,7 @@ class game_loop:
                 if event.type == pygame.QUIT:  # User quit window
                     run = False
 
-            self.draw_window(self.game_world, self.main_character)  # Call function
+            self.draw_window(self.main_character)  # Call function
 
         pygame.quit()  # quits the game loop and exits window
 
