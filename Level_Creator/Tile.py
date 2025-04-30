@@ -1,6 +1,14 @@
+#########################################
+#########################################
+
 # NOTE: This is currently non-operational
 
-class Tile():
+#########################################
+#########################################
+
+import pygame
+
+class Tile(pygame.sprite.Sprite):
 	### Attributes ###
 	"""
 	A class that holds a single tile of the map and its properties.
@@ -9,9 +17,10 @@ class Tile():
 	@param type: the identifying char that is parsed for image loading (see levelgrid_docs.md for more info on this).
 	@param bounds: the X and Y bounding coordinates of the tile.
 	@param collision_action: string identifying what should happen when the player collides with this tile, see documentation for list of collision actions (TODO).
+	@param image: the image uwu
 	"""
 	__id = -1
-	__type = "."
+	__type = "NONE"
 	__bounds = {
 		"max_x": -1,
 		"max_y": -1,
@@ -22,8 +31,15 @@ class Tile():
 
 
 	### Constructors ###
-	def __init__(id, type, bounds, collision_action):
-		pass
+	def __init__(id, type, bounds, collision_action, image):
+		self.set_id(id)
+		self.set_type(type)
+		self.set_bounds(bounds)
+		self.set_collision_action(collision_action)
+
+		# TODO targets for refactoring
+		self.image = image
+		self.mask = pygame.mask.from_surface(self.image) # init collision mask, improves performance for collision detection >> https://www.pygame.org/docs/ref/sprite.html#pygame.sprite.collide_mask
 
 	### Helpers ###
 
@@ -57,14 +73,4 @@ class Tile():
 		txt += "\tcollision action: " + str(self.get_collision_action()) + "\n"
 		return txt
 
-#  idea for new class: Tile
-	# this can be for individual tiles, which are then put into an iterable array
-		# will make .levelgrid files really ugly if we just store Tile instances in a CSV, 
-		# but maybe we could store the data in multiple masks?
-			# e.g. bounds-mask, collision-action-mask, id-mask, type-mask
-			# might bloat out the code, tho... maybe we'll need to do some compression
-# __bounds  (max_x, max_y) 
-		  # (min_x, min_y)
-# __collision_action
-# __id
-# __type (char, relates to grid_instance[]; e.g. ".","0","1"; this is what loads the images like with tile_catalogue)
+# https://www.geeksforgeeks.org/pygame-creating-sprites/

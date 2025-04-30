@@ -1,5 +1,17 @@
-for i in range(16):
-	print("."*16)
+import json
+  
+def main():
+	# GLOBAL VARIABLES 
+	COLOR = (255, 100, 98) 
+	SURFACE_COLOR = (167, 255, 100) 
+	WIDTH = 500
+	HEIGHT = 500
+	RED = (255, 0, 0)
 
-# @NAME:Stage_1_Level_1
-# @SIZE:16x16
+	f = open("tile_assets/test_metadata.json")
+	foo = json.load(f)
+	print(foo)
+	f.close()
+	
+if __name__ == '__main__':
+	main()
