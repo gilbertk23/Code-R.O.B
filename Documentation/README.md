@@ -1,6 +1,3 @@
-# Project Index
-- Welcome to ROB, our innovative 2D RPG game that will play sort of like old style Zelda! This is the main index and below, you can see most of the link directories to each and everything that we have in the project.
-
 # Documentation Index
 ## Diagrams
 #### Data Flow Diagrams:
@@ -41,32 +38,7 @@
 - [Lore](https://github.com/gilbertk23/cybr404project3/tree/main/Documentation/LORE)
 - [Rough Idea](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/rough_idea.md)
 
-# Coding Index
-## Code Resources
-#### Assets
-- [Assets](https://github.com/gilbertk23/cybr404project3/tree/main/Source/Assets)
-
-## Code
-#### Game Window
-- [Default Window](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Game_Windows/default_window.py)
-- [Game Loop](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Game_Windows/game_loop.py)
-- [Main Menu](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Game_Windows/main_menu.py)
-
-#### Interactors
-- [Main Character](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/main_character.py)
-
-#### Maps
-- [Map Generator](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Maps/map_generator.py)
-- [Game World](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Maps/game_world.py)
-
-#### Test
-- [Getters / Setters](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Test/getters_and_setters_test.py)
-
-`Note: This only includes the working classes that I personally know of - Jerry (The ones I've done testing for)`
-
 
 ## How Documentation Will Be Done
 Everything is to be done in `.md` files unless there is reason to use another format (e.g. diagrams).
 
-
-#### Team Members: Gavin Sloan | Coder, Jerry Cai | Security, Kaden Gilbert | Team Lead, Nova Solarz | Documentation, and Nick Clark | Design
