@@ -52,6 +52,7 @@ class game_loop:
             game_map = world(preset_maps.start_map())
             return game_map
 
+
         else:
             print(game_map.get_map_count())
             print("donkey")
