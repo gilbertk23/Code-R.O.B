@@ -3,6 +3,7 @@ from Source.Maps.game_world import world
 from Source.Maps.map_generator import map_generator
 from Source.Interactors.main_character import player
 from Source.Game_Windows.default_window import default_window
+from Source.Assets import preset_maps
 import pygame
 
 pygame.init()
@@ -21,6 +22,8 @@ class game_loop:
         self.game_world = world(self.generated_map.generate_map_array())
         """
         self.main_character = player()
+
+        self.map = 1
 
         # Set Font
         self.font = pygame.font.Font('freesansbold.ttf', 30)
@@ -44,17 +47,16 @@ class game_loop:
         pygame.display.update()
 
     def get_game_window(self):
-        game_map = map_generator()
-        print(game_map.get_map_count())
+        game_map = map_generator(map_count=self.map)
         if game_map.get_map_count() == 1:
-            print("Potato")
-            game_map.set_map_count(10)
-            game_map = world(game_map.generate_map_array())
+            game_map = world(preset_maps.start_map())
+            return game_map
 
         else:
             print(game_map.get_map_count())
             print("donkey")
-        return game_map
+            game_map = world(game_map.generate_map_array())
+            return game_map
 
     def run_game(self):
         pygame.init()
