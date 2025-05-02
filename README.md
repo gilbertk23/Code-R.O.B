@@ -1,7 +1,7 @@
 # Project Index
 
-# Documentation Index
-## Diagrams
+## Documentation Index
+### Diagrams
 #### Data Flow Diagrams:
 - [Nova L1 DFD](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/DFDs/DFD_L1_Nova_1.svg)
 - [Rob L0 DFD](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/DFDs/Rob_DFD_WK1.0.drawio.png)
