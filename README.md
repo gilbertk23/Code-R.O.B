@@ -1,7 +1,7 @@
 # Project Index
 - Welcome to ROB, our innovative 2D RPG game that will play sort of like old style Zelda! This is the main index and below, you can see most of the link directories to each and everything that we have in the project.
 
-## Documentation Index
+## Documentation Index - ✉️
 ### Diagrams
 #### Data Flow Diagrams:
 - [Nova L1 DFD](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/DFDs/DFD_L1_Nova_1.svg)
@@ -46,7 +46,7 @@
 #### Assets
 - [Assets](https://github.com/gilbertk23/cybr404project3/tree/main/Source/Assets)
 
-### Code
+### Code - 📑
 #### Game Window
 - [Default Window](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Game_Windows/default_window.py)
 - [Game Loop](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Game_Windows/game_loop.py)
@@ -64,7 +64,7 @@
 
 `Note: This only includes the working classes that I personally know of - Jerry (The ones I've done testing for)`
 
-## Test Index
+## Test Index - 🧬
 ### Testing
 #### Results / Plans
 - [Security Plan](https://github.com/gilbertk23/cybr404project3/blob/main/Test/Security%20Testing%20Plan.md)
