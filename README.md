@@ -8,7 +8,7 @@ Use the main branch link, [main](https://github.com/gilbertk23/cybr404project3/t
 
 
 ## Usage
-`Go to the file that includes the following code.`
+`Go to the file that includes the following code and run to use.`
 ```python
 # Import Files/Modules
 from Source.Game_Windows.game_loop import game_loop
