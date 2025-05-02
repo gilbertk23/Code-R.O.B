@@ -64,7 +64,7 @@ if __name__ == "__main__":  # Ensures code only runs file in file
 ## Coding Index
 #### `Assets`
 - [Assets](https://github.com/gilbertk23/cybr404project3/tree/main/Source/Assets)
-- 
+
 #### `Game Window`
 - [Default Window](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Game_Windows/default_window.py)
 - [Game Loop](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Game_Windows/game_loop.py)
