@@ -1,6 +1,5 @@
 # Import Files/Modules
 
-
 class sprite:
 	# Data Attributes
 	__width = -1
