@@ -1,5 +1,6 @@
 import pygame
 from Source.Maps.map_generator import map_generator
+from Source.Interactors.character import character
 from Source.Game_Windows.default_window import default_window
 
 class world:
@@ -21,7 +22,7 @@ class world:
 	# Helpers
 	def reset_map(self):
 		new_world = world(map_generator().generate_map_array())
-		new_world.draw(default_window().run_window())
+		new_world.draw(default_window().init_window())
 		self.map.set_map_count(self.map.get_map_count() + 1)
 		print(f"Map Count: {self.map.get_map_count()}")
 

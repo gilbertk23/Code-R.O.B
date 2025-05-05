@@ -17,7 +17,7 @@ class map_generator:
 	__map_count = "Error"
 
 	# Init
-	def __init__(self, min_width=10, max_width=20, min_height=10, max_height=20, min_enemies=0, max_enemies=30, current_score=0, map_count=1):
+	def __init__(self, min_width=35, max_width=35, min_height=25, max_height=25, min_enemies=0, max_enemies=30, current_score=0, map_count=1):
 		self.set_min_width(min_width)
 		self.set_max_width(max_width)
 		self.set_min_height(min_height)
@@ -29,6 +29,7 @@ class map_generator:
 
 		self.set_row_size = random.randint(self.get_min_height(), self.get_max_height())
 		self.set_col_size = random.randint(self.get_min_width(), self.get_max_width())
+
 
 	# Helpers
 	def get_map_blocks(self, block_type):
@@ -52,6 +53,10 @@ class map_generator:
 		tile = (img, img_rect)  # Save tile as tuple
 		tile_list.append(tile)  # Adding tile to list
 
+	def get_num_enemies(self):
+		enemy_num = random.randint(self.get_min_enemies(), self.get_max_enemies())
+		return enemy_num
+
 	def get_row_size(self):
 		return self.set_row_size  # Returns the size of the map row size
 
@@ -65,6 +70,22 @@ class map_generator:
 	def get_col_portal(self):
 		col_portal = int(self.get_col_size()/2)  # Set position of the portal on the column
 		return col_portal  # Return position
+
+	def get_left_portal_pos(self):
+		left_pos = [(self.get_col_size() + 100) - 30, (self.get_row_size() * 20 + 200) / 2 + 15]
+		return left_pos
+
+	def get_right_portal_pos(self):
+		right_pos = [(self.get_col_size() * 20 + 100) - 15, (self.get_row_size() * 20 + 200) / 2 + 15]
+		return right_pos
+
+	def get_top_portal_pos(self):
+		top_pos = [(self.get_col_size() * 11 + 80), (self.get_row_size() + 80)]
+		return top_pos
+
+	def get_bottom_portal_pos(self):
+		bottom_pos = [(self.get_col_size() * 11 + 80), ((self.get_row_size() * 20) + 85)]
+		return bottom_pos
 
 	def generate_column_border(self):
 		left_distance = self.get_col_size() - self.get_col_portal()  # Left distance value of portal position
@@ -118,7 +139,6 @@ class map_generator:
 			map_array.append(self.generate_column_border())  # Append column border
 			for rows in range(self.get_row_size() - 1):  # Iterate through range of border size
 				map_array.append(self.generate_middle_map(rows))  # Append middle map
-
 			return map_array  # Return middle map
 
 	# Function to print viewable array

@@ -31,13 +31,13 @@ class character(sprite):
 	def key_press(self):
 		key = pygame.key.get_pressed()
 		if key[pygame.K_a]:
-			self.set_x_pos(self.get_x_pos() - 1)
+			self.set_x_pos(self.get_x_pos() - self.get_speed())
 		if key[pygame.K_d]:
-			self.set_x_pos(self.get_x_pos() + 1)
+			self.set_x_pos(self.get_x_pos() + self.get_speed())
 		if key[pygame.K_w]:
-			self.set_y_pos(self.get_y_pos() - 1)
+			self.set_y_pos(self.get_y_pos() - self.get_speed())
 		if key[pygame.K_s]:
-			self.set_y_pos(self.get_y_pos() + 1)
+			self.set_y_pos(self.get_y_pos() + self.get_speed())
 
 	def track_player(self):
 		pass

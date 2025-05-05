@@ -29,24 +29,28 @@ class windows:
     def draw_game_world(self):
         if self.get_menu_state() == "play_game":
             pygame.Surface.fill(self.game_window, (0, 0, 0))
+            pygame.draw.rect(self.game_window, (255, 0, 0), (95, 95, self.game_window.get_width() - 190, self.game_window.get_height() - 190), 5)
+            self.create_title()
             self.create_back_button()
 
     # Credits
     def draw_credits(self):
         if self.get_menu_state() == "credits":
             pygame.Surface.fill(self.game_window, (0, 0, 0))
+            self.create_title()
             self.create_back_button()
 
     # Settings
     def draw_settings(self):
         if self.get_menu_state() == "settings":
             pygame.Surface.fill(self.game_window, (0, 0, 0))
+            self.create_title()
             self.create_back_button()
 
 
     def create_back_button(self):
         settings_button_img = pygame.image.load("Assets/button_quit.png").convert_alpha()
-        settings_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()- 100, image=settings_button_img)
+        settings_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()- 90, image=settings_button_img)
         if(settings_button.draw(self.game_window)):
             self.set_menu_state("main_menu")
 
@@ -61,7 +65,7 @@ class windows:
 
     def create_title(self):
         title_img = pygame.image.load("Assets/ROB.png").convert_alpha()
-        title = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()/10, image=title_img)
+        title = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()/25, image=title_img)
         title.draw(self.game_window)
 
     def create_play_button(self):
