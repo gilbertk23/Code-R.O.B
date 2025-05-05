@@ -25,6 +25,7 @@ class game_loop:
         self.main_character = main_character(10, 10, 400, 560, 'Player Sprite.png', 100, 5, 2, 10, True)
 
         self.map_count = 1
+        self.enemies = []
 
     def update_screen(self):
         self.current_window.draw_window()
@@ -35,16 +36,34 @@ class game_loop:
     def create_game_world(self):
         if self.current_window.get_menu_state() == "play_game":
             self.game_world.draw(self.game_window)
+            for bad_guy in self.enemies:
+                bad_guy.update_enemy()
             self.border_collision()
             self.portal_collision()
             self.main_character.update_main_character()
 
     def portal_collision(self):
+        # Detect collision on the left portal
         if (self.main_character.get_x_pos() == self.world_array.get_left_portal_pos()[0] + 10 and
             self.main_character.get_y_pos() >= self.world_array.get_left_portal_pos()[1] - 10 and
             self.main_character.get_y_pos() <= self.world_array.get_left_portal_pos()[1] + 10):
 
             self.reset_map()
+
+        # Detect collision on the right portal
+        elif (self.main_character.get_x_pos() == self.world_array.get_right_portal_pos()[0] - 10 and
+            self.main_character.get_y_pos() >= self.world_array.get_right_portal_pos()[1] - 10 and
+            self.main_character.get_y_pos() <= self.world_array.get_right_portal_pos()[1] + 10):
+
+            self.reset_map()
+
+    def generate_enemies(self):
+        for enemies in range(self.world_array.get_num_enemies()):
+            rand_pos = random.randint(self.world_array.get_left_portal_pos()[0] + 10, self.world_array.get_right_portal_pos()[0] - 10)
+            bad_guy = enemy(10, 10, rand_pos, rand_pos, 'enemy.png', 10, 10, 10, 10, 10)
+            bad_guy.update_enemy()
+
+
 
     def reset_map(self):
         # Reset Map
@@ -54,6 +73,14 @@ class game_loop:
         # Update Player
         self.main_character.set_x_pos(self.game_window.get_width()/2)
         self.main_character.set_y_pos(self.game_window.get_height()/2)
+
+        # Update Enemies
+        self.enemies = []
+        for enemies in range(self.world_array.get_num_enemies()):
+            rand_x = random.randint(self.world_array.get_left_portal_pos()[0] + 10, self.world_array.get_right_portal_pos()[0] - 10)
+            rand_y = random.randint(self.world_array.get_top_portal_pos()[1] + 10, self.world_array.get_bottom_portal_pos()[1] - 10)
+            new_enemy = enemy(10, 10, rand_x, rand_y, 'enemy.png', 10, 10, 10, 10, 10)
+            self.enemies.append(new_enemy)
 
         # Update Map Count
         self.map_count += 1

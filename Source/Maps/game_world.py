@@ -24,7 +24,7 @@ class world:
 		new_world = world(map_generator().generate_map_array())
 		new_world.draw(default_window().init_window())
 		self.map.set_map_count(self.map.get_map_count() + 1)
-		print4(f"Map Count: {self.map.get_map_count()}")
+		print(f"Map Count: {self.map.get_map_count()}")
 
 	def map_textures(self, tile, row_count, col_count):
 		map_generator().set_blocks(tile, self.tile_list, self.get_tile_size(), col_count, row_count)
