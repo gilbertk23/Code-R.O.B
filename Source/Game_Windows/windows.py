@@ -19,25 +19,23 @@ class windows:
     def draw_window(self):
         self.draw_main_menu()
 
-        if self.get_menu_state() == "play_game":
-            pass
+        self.draw_game_world()
 
         self.draw_settings()
 
         self.draw_credits()
+
+    # Make world
+    def draw_game_world(self):
+        if self.get_menu_state() == "play_game":
+            pygame.Surface.fill(self.game_window, (0, 0, 0))
+            self.create_back_button()
 
     # Credits
     def draw_credits(self):
         if self.get_menu_state() == "credits":
             pygame.Surface.fill(self.game_window, (0, 0, 0))
             self.create_back_button()
-
-    def create_back_button(self):
-        settings_button_img = pygame.image.load("Assets/button_quit.png").convert_alpha()
-        settings_button = button(x_pos=self.game_window.get_width() / 2.5, y_pos=self.game_window.get_height() / 2, image=settings_button_img)
-        if (settings_button.draw(self.game_window)):
-            self.set_menu_state("main_menu")
-
 
     # Settings
     def draw_settings(self):
@@ -48,7 +46,7 @@ class windows:
 
     def create_back_button(self):
         settings_button_img = pygame.image.load("Assets/button_quit.png").convert_alpha()
-        settings_button = button(x_pos=self.game_window.get_width()/10, y_pos=self.game_window.get_height()/2, image=settings_button_img)
+        settings_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()- 100, image=settings_button_img)
         if(settings_button.draw(self.game_window)):
             self.set_menu_state("main_menu")
 
@@ -70,7 +68,7 @@ class windows:
         play_button_img = pygame.image.load("Assets/button_resume.png").convert_alpha()
         play_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()/3, image=play_button_img)
         if(play_button.draw(self.game_window)):
-            self.set_menu_state("settings")
+            self.set_menu_state("play_game")
 
     def create_settings_button(self):
         settings_button_img = pygame.image.load("Assets/button_back.png").convert_alpha()

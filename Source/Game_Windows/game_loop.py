@@ -1,25 +1,30 @@
 from Source.Game_Windows.default_window import default_window
+from Source.Maps.map_generator import map_generator
+from Source.Maps.game_world import world
 from Source.Game_Windows.windows import windows
 import pygame
 
 pygame.init()
 
 class game_loop:
-    # Data Attributes
     __fps = -1
 
     def __init__(self, fps=60):
-        # Set target FPS
         self.set_fps(fps)
-        # Initialize with the main menu (or default_window if you prefer)
         self.current_window = windows()
+        self.game_window = default_window().init_window()
+        self.world_array = map_generator().generate_map_array()
+        self.game_world = world(self.world_array)
 
     def update_screen(self):
-        self.draw_window()
-
-    def draw_window(self) -> None:
         self.current_window.draw_window()
+        self.create_game_world()
         pygame.display.update()
+
+    def create_game_world(self):
+        if self.current_window.get_menu_state() == "play_game":
+            self.game_world.draw(self.game_window)
+
 
     def run_game(self):
         clock = pygame.time.Clock()
@@ -32,14 +37,12 @@ class game_loop:
                 if event.type == pygame.QUIT:
                     run = False
 
-            self.draw_window()
+            self.update_screen()
 
         pygame.quit()
 
-    # Getter
-    def get_fps(self) -> int:
+    def get_fps(self):
         return self.__fps
 
-    # Setter
-    def set_fps(self, fps: int) -> None:
+    def set_fps(self, fps):
         self.__fps = fps
