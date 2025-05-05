@@ -1,8 +1,12 @@
+from fontTools.colorLib.builder import populateCOLRv0
+
 from Source.Game_Windows.default_window import default_window
 from Source.Maps.map_generator import map_generator
 from Source.Maps.game_world import world
-from Source.Interactors.character import character
+from Source.Interactors.main_character import main_character
+from Source.Interactors.enemy import enemy
 from Source.Game_Windows.windows import windows
+import random
 from Source import Assets
 import pygame
 
@@ -13,23 +17,50 @@ class game_loop:
 
     def __init__(self, fps=60):
         self.set_fps(fps)
+
         self.current_window = windows()
         self.game_window = default_window().init_window()
         self.world_array = map_generator()
         self.game_world = world(self.world_array.generate_map_array())
+        self.main_character = main_character(10, 10, 400, 560, 'Player Sprite.png', 100, 5, 2, 10, True)
 
-        self.main_character = character(10, 10, 400, 560, 'Player Sprite.png', 100, 5, 2, 10)
+        self.map_count = 1
 
     def update_screen(self):
         self.current_window.draw_window()
         self.create_game_world()
         pygame.display.update()
 
+
     def create_game_world(self):
         if self.current_window.get_menu_state() == "play_game":
             self.game_world.draw(self.game_window)
             self.border_collision()
-            self.main_character.update_character()
+            self.portal_collision()
+            self.main_character.update_main_character()
+
+    def portal_collision(self):
+        if (self.main_character.get_x_pos() == self.world_array.get_left_portal_pos()[0] + 10 and
+            self.main_character.get_y_pos() >= self.world_array.get_left_portal_pos()[1] - 10 and
+            self.main_character.get_y_pos() <= self.world_array.get_left_portal_pos()[1] + 10):
+
+            self.reset_map()
+
+    def reset_map(self):
+        # Reset Map
+        self.world_array = map_generator()
+        self.game_world = world(self.world_array.generate_map_array())
+
+        # Update Player
+        self.main_character.set_x_pos(self.game_window.get_width()/2)
+        self.main_character.set_y_pos(self.game_window.get_height()/2)
+
+        # Update Map Count
+        self.map_count += 1
+
+        if self.map_count == 4:
+            print("test")
+            self.current_window.set_menu_state("win_game")
 
     def border_collision(self):
         # Left border collision

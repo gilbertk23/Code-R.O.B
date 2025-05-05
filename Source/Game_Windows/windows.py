@@ -17,6 +17,8 @@ class windows:
 
     # Helpers
     def draw_window(self):
+        self.draw_win_window()
+
         self.draw_main_menu()
 
         self.draw_game_world()
@@ -24,6 +26,12 @@ class windows:
         self.draw_settings()
 
         self.draw_credits()
+
+    # Win Window
+    def draw_win_window(self):
+        if self.get_menu_state() == "win_game":
+            pygame.Surface.fill(self.game_window, (0, 0, 0))
+            self.create_title()
 
     # Make world
     def draw_game_world(self):
