@@ -23,9 +23,13 @@ class game_loop:
         self.world_array = map_generator()
         self.game_world = world(self.world_array.generate_map_array())
         self.main_character = main_character(10, 10, 400, 560, 'Player Sprite.png', 100, 5, 2, 10, True)
-
+        self.font = pygame.font.Font('freesansbold.ttf', 20)
         self.map_count = 0
         self.enemies = []
+
+    def update_map_count(self):
+        map_count = self.font.render(f"Map Count: {self.map_count}", True, (255, 0, 0))
+        self.game_window.blit(map_count, (100, 100))
 
     def update_screen(self):
         self.current_window.draw_window()
@@ -36,6 +40,7 @@ class game_loop:
     def create_game_world(self):
         if self.current_window.get_menu_state() == "play_game":
             self.game_world.draw(self.game_window)
+            self.update_map_count()
             for bad_guy in self.enemies:
                 bad_guy.update_enemy(self.main_character.get_x_pos(), self.main_character.get_y_pos())
             self.border_collision()

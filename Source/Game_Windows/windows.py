@@ -1,4 +1,6 @@
 # Import Files/Modules
+from operator import truediv
+
 from Source.Game_Windows.default_window import default_window
 from Source.Interactors.button import button
 from Source import Assets
