@@ -4,25 +4,15 @@ R.O.B is a Python 2d RPG game that allows you to pick up coins to progress in sc
 
 ## Installation
 
-Use the main branch link, [main](https://github.com/gilbertk23/cybr404project3/tree/main) to install the zip code for R.O.B.
-
+You can either:
+1. make a clone of the repository, or
+2. download the [`Source`](Source) directory
 
 ## Usage
-`Go to the file that includes the following code and run to use.`
-```python
-# Import Files/Modules
-from Source.Game_Windows.game_loop import game_loop
 
+1. Navigate to the downloaded [`Source`](Source) directory in a terminal of your choice: `cd ~/Source`
+2. run the [driver](Source/driver.py) file in a python interpereter: `python3 driver.py`
 
-# Def main contains main game loop components only
-def main() -> None:
-    game_loop().run_game()
-
-
-if __name__ == "__main__":  # Ensures code only runs file in file
-    main()
-
-```
 
 ## Documentation Index
 #### `Data Flow Diagrams:`
