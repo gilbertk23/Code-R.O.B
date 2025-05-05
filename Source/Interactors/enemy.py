@@ -1,5 +1,6 @@
 # Import Files/Modules
 from Source.Interactors.character import character
+import math
 
 
 class enemy(character):
@@ -12,11 +13,35 @@ class enemy(character):
         self.set_target(target)
 
     # Helpers
-    def update_enemy(self):
+    def update_enemy(self, target_x_pos, target_y_pos):
+        self.track_target(target_x_pos, target_y_pos)
         self.game_window.blit(self.image, (self.get_x_pos(), self.get_y_pos()))
 
-    def track_target(self, target):
-        self.set_target(target)
+    def get_new_x_pos(self, target_x_pos):
+        if target_x_pos < self.get_x_pos():
+            self.set_x_pos(self.get_x_pos() - self.get_speed())
+
+        elif target_x_pos > self.get_x_pos():
+            self.set_x_pos(self.get_x_pos() + self.get_speed())
+
+    def get_new_y_pos(self, target_y_pos):
+        if target_y_pos < self.get_y_pos():
+            self.set_y_pos(self.get_y_pos() - self.get_speed())
+
+        elif target_y_pos > self.get_y_pos():
+            self.set_y_pos(self.get_y_pos() + self.get_speed())
+
+    def is_awake(self, target_x_pos, target_y_pos):
+        player_distance = math.sqrt((target_x_pos - self.get_x_pos())**2 + (target_y_pos - self.get_y_pos())**2)
+        if player_distance <= self.get_attack_range():
+            return True
+
+        return False
+
+    def track_target(self, target_x_pos, target_y_pos):
+        if self.is_awake(target_x_pos, target_y_pos):
+            self.get_new_x_pos(target_x_pos)
+            self.get_new_y_pos(target_y_pos)
 
     # Getters
     def get_target(self):

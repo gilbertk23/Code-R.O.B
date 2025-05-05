@@ -24,7 +24,7 @@ class game_loop:
         self.game_world = world(self.world_array.generate_map_array())
         self.main_character = main_character(10, 10, 400, 560, 'Player Sprite.png', 100, 5, 2, 10, True)
 
-        self.map_count = 1
+        self.map_count = 0
         self.enemies = []
 
     def update_screen(self):
@@ -37,7 +37,7 @@ class game_loop:
         if self.current_window.get_menu_state() == "play_game":
             self.game_world.draw(self.game_window)
             for bad_guy in self.enemies:
-                bad_guy.update_enemy()
+                bad_guy.update_enemy(self.main_character.get_x_pos(), self.main_character.get_y_pos())
             self.border_collision()
             self.portal_collision()
             self.main_character.update_main_character()
@@ -57,14 +57,6 @@ class game_loop:
 
             self.reset_map()
 
-    def generate_enemies(self):
-        for enemies in range(self.world_array.get_num_enemies()):
-            rand_pos = random.randint(self.world_array.get_left_portal_pos()[0] + 10, self.world_array.get_right_portal_pos()[0] - 10)
-            bad_guy = enemy(10, 10, rand_pos, rand_pos, 'enemy.png', 10, 10, 10, 10, 10)
-            bad_guy.update_enemy()
-
-
-
     def reset_map(self):
         # Reset Map
         self.world_array = map_generator()
@@ -79,13 +71,13 @@ class game_loop:
         for enemies in range(self.world_array.get_num_enemies()):
             rand_x = random.randint(self.world_array.get_left_portal_pos()[0] + 10, self.world_array.get_right_portal_pos()[0] - 10)
             rand_y = random.randint(self.world_array.get_top_portal_pos()[1] + 10, self.world_array.get_bottom_portal_pos()[1] - 10)
-            new_enemy = enemy(10, 10, rand_x, rand_y, 'enemy.png', 10, 10, 10, 10, 10)
+            new_enemy = enemy(10, 10, rand_x, rand_y, 'enemy.png', 10, 2, 200, 10, 10)
             self.enemies.append(new_enemy)
 
         # Update Map Count
         self.map_count += 1
 
-        if self.map_count == 4:
+        if self.map_count == 10:
             print("test")
             self.current_window.set_menu_state("win_game")
 
