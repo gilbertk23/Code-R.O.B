@@ -116,6 +116,7 @@ class game_loop():
 
         if self.map_count == 10:
             self.current_window.set_menu_state("win_game")
+            self.map_count = 0
 
     def reset_map(self):
         self.generate_new_map()
