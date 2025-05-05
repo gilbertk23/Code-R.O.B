@@ -30,7 +30,7 @@ class player:
 		self.char_rect = self.image.get_rect()  # Turn character into rectangle
 
 		# Get Window
-		self.game_window = default_window().run_window()
+		self.game_window = default_window().init_window()
 
 		self.portal_active = False
 
