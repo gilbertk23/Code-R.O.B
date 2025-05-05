@@ -8,12 +8,12 @@ class button(sprite):
     __is_clicked = None
 
     # Init
-    def __init__(self, width=10, height=10, x_pos=10, y_pos=10, image="Source/Assets/Clear Block.png", is_hover=False, is_clicked=False):
+    def __init__(self, width=200, height=100, x_pos=10, y_pos=10, image="Source/Assets/Clear Block.png", is_hover=False, is_clicked=False):
         super().__init__(width, height, x_pos, y_pos, image)
         self.set_is_hover(is_hover)
         self.set_is_clicked(is_clicked)
 
-        self.image = pygame.transform.scale(image, (int(width * 20), int(height * 10)))
+        self.image = pygame.transform.scale(image, (int(width), int(height)))
         self.rect = self.image.get_rect()
         self.rect.topleft = (x_pos, y_pos)
 

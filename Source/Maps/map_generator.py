@@ -17,21 +17,18 @@ class map_generator:
 	__map_count = "Error"
 
 	# Init
-	def __init__(self, min_width=10, max_width=20, min_height=10, max_height=20, min_enemies=0, max_enemies=30, min_chests=0, max_chests=10, current_score=0, map_count=1):
+	def __init__(self, min_width=10, max_width=20, min_height=10, max_height=20, min_enemies=0, max_enemies=30, current_score=0, map_count=1):
 		self.set_min_width(min_width)
 		self.set_max_width(max_width)
 		self.set_min_height(min_height)
 		self.set_max_height(max_height)
 		self.set_min_enemies(min_enemies)
 		self.set_max_enemies(max_enemies)
-		self.set_min_chests(min_chests)
-		self.set_max_chests(max_chests)
 		self.set_current_score(current_score)
 		self.set_map_count(map_count)
 
 		self.set_row_size = random.randint(self.get_min_height(), self.get_max_height())
 		self.set_col_size = random.randint(self.get_min_width(), self.get_max_width())
-		self.set_chest_num = random.randint(self.get_min_chests(), self.get_max_chests())
 
 	# Helpers
 	def get_map_blocks(self, block_type):
@@ -68,24 +65,6 @@ class map_generator:
 	def get_col_portal(self):
 		col_portal = int(self.get_col_size()/2)  # Set position of the portal on the column
 		return col_portal  # Return position
-
-	def get_chest_pos(self):
-		total_chests = self.set_chest_num  # Get the total number of chests per map
-		chest_list = []  # Create empty chest list
-
-		for items in range(total_chests):  # Iterate through the range of total chests
-			column = random.randint(1, self.get_col_size() - 1)  # Set random column value
-			row = random.randint(1, self.get_row_size() - 1)  # Set random row value
-			chest_list.append([column, row])  # Chest instance set to row and column
-
-		return chest_list  # Return chest list
-
-	def generate_chests(self, map_array):
-		for columns in self.get_chest_pos():  # Iterate through columns on the chest positions
-			if map_array[columns[1]][columns[0]] == 3:  # Check to see if position is available
-				map_array[columns[1]][columns[0]] = 4  # If available set position to chest block
-
-		return map_array  # Return map array
 
 	def generate_column_border(self):
 		left_distance = self.get_col_size() - self.get_col_portal()  # Left distance value of portal position
@@ -139,8 +118,6 @@ class map_generator:
 			map_array.append(self.generate_column_border())  # Append column border
 			for rows in range(self.get_row_size() - 1):  # Iterate through range of border size
 				map_array.append(self.generate_middle_map(rows))  # Append middle map
-
-			self.generate_chests(map_array)  # Plot Chests onto map array
 
 			return map_array  # Return middle map
 
