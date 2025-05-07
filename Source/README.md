@@ -17,6 +17,15 @@ Use the main branch link, [main](https://github.com/gilbertk23/cybr404project3/t
 
 #### `Interactors`
 - [Main Character](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/main_character.py)
+- [Character](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/character.py)
+- [Sprite](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/sprite.py)
+- [Config](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/config.py)
+- [Enemy](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/enemy.py)
+- [Load Sprites](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/load_sprites.py)
+- [Button](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/button.py)
+- [Sprite](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/sprite.py)
+- [Sprite Sheet](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/sprite_sheet.py)
+- [Tile Block](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Interactors/tile_block.py)
 
 #### `Maps`
 - [Map Generator](https://github.com/gilbertk23/cybr404project3/blob/main/Source/Maps/map_generator.py)
