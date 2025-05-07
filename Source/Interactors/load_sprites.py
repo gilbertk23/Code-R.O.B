@@ -1,5 +1,8 @@
+from tarfile import BLOCKSIZE
+
 from Source.Interactors.main_character import main_character
 from Source.Interactors.enemy import enemy
+from Source.Interactors.tile_block import tile_block
 from Source.Interactors.config import *
 import random
 import pygame
@@ -11,7 +14,7 @@ class load_sprites:
     __sprite_list = []
 
     # Init
-    def __init__(self, window, world_array, enemy_num, sprite_list=[]):
+    def __init__(self, window, world_array, enemy_num, tile_map, sprite_list=[]):
         self.set_sprite_list(sprite_list)
         self.all_sprites = pygame.sprite.LayeredUpdates()
         self.blocks = pygame.sprite.LayeredUpdates()
@@ -28,6 +31,7 @@ class load_sprites:
         self.main_character = self.load_character(window)
         self.load_enemies = self.find_enemies(enemy_num)
 
+        self.create_tilemap(tile_map)
 
     # Helpers
     def update(self, game_window):
@@ -40,7 +44,6 @@ class load_sprites:
 
     def find_enemies(self, enemy_num):
         for enemies in range(enemy_num):
-            print(enemies)
             rand_x = random.randint(self.world_array.get_left_portal_pos()[0] + 10, self.world_array.get_right_portal_pos()[0] - 10)
             rand_y = random.randint(self.world_array.get_top_portal_pos()[1] + 10, self.world_array.get_bottom_portal_pos()[1] - 10)
             new_enemy = enemy(self, 20, 20, rand_x, rand_y, 'enemy.png', 10, 2, 150, 10, 10)
@@ -48,6 +51,13 @@ class load_sprites:
 
     def draw_sprites(self, game_window):
         self.all_sprites.draw(game_window)
+
+    def create_tilemap(self, tile_map):
+        for i, row in enumerate(tile_map):
+            for j, column in enumerate(row):
+                tile_block(self, self.blocks, j * 20, i * 20).return_blocks(column)
+
+
 
     # Getters
     def get_sprite_list(self):

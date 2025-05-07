@@ -10,6 +10,7 @@ class world:
 
 	# Init
 	def __init__(self, game_map=[], tile_size=20):
+		super().__init__()
 		self.set_game_map(game_map)
 		self.set_tile_size(tile_size)
 

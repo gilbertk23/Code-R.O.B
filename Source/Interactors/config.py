@@ -53,4 +53,5 @@ DEFAULT_IMAGE = 'Source/Assets/default.png'
 
 # Layer Settings
 PLAYER_LAYER = 1
-ENEMY_LAYER = 2
+ENEMY_LAYER = 1
+BLOCK_LAYER = 0

@@ -1,9 +1,8 @@
 # Import Files/Modules
+from Source.Interactors.config import *
 import random
 import pygame
 import os
-
-from Source.Interactors.config import ROW_SIZE, HEIGHT, COL_SIZE
 
 
 class map_generator:
