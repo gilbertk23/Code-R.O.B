@@ -1,6 +1,6 @@
 # Import Files/Modules
-from Source.Game_Windows.default_window import default_window
 from Source.Interactors.button import button
+from Source.Interactors.config import *
 import pygame
 
 class windows:
@@ -9,10 +9,10 @@ class windows:
     __font = None
 
     # Init
-    def __init__(self, menu_state="main_menu", font='freesansbold.ttf'):
-        self.set_menu_state(menu_state)
+    def __init__(self, window, menu_state=DEFAULT_WINDOW, font=FONT1):
+        self.set_menu_state(menu_state)  # Sets the state of the window
         self.set_font(pygame.font.Font(font, 30))  # Sets the font
-        self.game_window = default_window().init_window()  # Instantiate the window
+        self.game_window = window # Instantiate the window
 
     # Helpers
     def draw_window(self):
@@ -65,11 +65,11 @@ class windows:
         main_menu_button_img = pygame.image.load("Assets/main_menu.png").convert_alpha()
         main_menu_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()- 90, image=main_menu_button_img)
         if(main_menu_button.draw(self.game_window)):
-            self.set_menu_state("main_menu")
+            self.set_menu_state("Main_Menu")
 
     # Main Menu
     def draw_main_menu(self):
-        if self.get_menu_state() == "main_menu":
+        if self.get_menu_state() == "Main_Menu":
             pygame.Surface.fill(self.game_window, (0, 0, 0))
             self.create_title()
             self.create_play_button()

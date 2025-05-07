@@ -1,4 +1,5 @@
 # Import Files/Modules
+from Source.Interactors.config import *
 from Source.Interactors.sprite import sprite
 import pygame
 
@@ -8,7 +9,7 @@ class button(sprite):
     __is_clicked = None
 
     # Init
-    def __init__(self, width=200, height=100, x_pos=10, y_pos=10, image="Source/Assets/Clear Block.png", is_hover=False, is_clicked=False):
+    def __init__(self, width=200, height=100, x_pos=CENTER_X, y_pos=CENTER_Y, image=DEFAULT_IMAGE, is_hover=False, is_clicked=False):
         super().__init__(width, height, x_pos, y_pos, image)
         self.set_is_hover(is_hover)
         self.set_is_clicked(is_clicked)

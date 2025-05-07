@@ -1,17 +1,31 @@
 # Import Files/Modules
 from Source.Interactors.character import character
+from Source.Interactors.config import *
 import pygame
+import os
 
 class main_character(character):
     # Data Attributes
     __player_controlled = None
 
     # Init
-    def __init__(self, width, height, x_pos, y_pos, image, health, speed, attack_range, attack_damage, player_controlled):
-        super().__init__(width, height, x_pos, y_pos, image, health, speed, attack_range, attack_damage)
+    def __init__(self, sprite_sheet, window, width=CHAR_WIDTH, height=CHAR_HEIGHT, x_pos=CENTER_X, y_pos=CENTER_Y, image=DEFAULT_IMAGE, health=100, speed=3, attack_range=10, attack_damage=10, player_controlled=True):
+        # Super Init of the Character class
+        super().__init__(sprite_sheet, width, height, x_pos, y_pos, image, health, speed, attack_range, attack_damage)
         self.set_player_controlled(player_controlled)
 
+        self._layer = PLAYER_LAYER  # Set Player Layer
+
+
+
+        # World Information
+        self.game_window = window
+
     # Helpers
+    def update(self, world, target_x_pos, target_y_pos):
+        self.key_press()  # Detect key presses
+        self.rect.topleft = (self.get_x_pos(), self.get_y_pos())  # Update character to window
+
     def key_press(self):
         key = pygame.key.get_pressed()
         if key[pygame.K_a]:
@@ -22,10 +36,6 @@ class main_character(character):
             self.set_y_pos(self.get_y_pos() - self.get_speed())
         if key[pygame.K_s]:
             self.set_y_pos(self.get_y_pos() + self.get_speed())
-
-    def update_main_character(self):
-        self.key_press()
-        self.game_window.blit(self.image, (self.get_x_pos(), self.get_y_pos()))
 
     # Getters
     def get_player_controlled(self):

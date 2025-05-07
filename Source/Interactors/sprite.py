@@ -1,4 +1,5 @@
 # Import Files/Modules
+from Source.Interactors.config import *
 
 class sprite:
 	# Data Attributes
@@ -7,9 +8,11 @@ class sprite:
 	__x_pos = -1
 	__y_pos = -1
 	__image = "Error"
+	__sprite_char = "Error"
 
 	# Init
-	def __init__(self, width=10, height=10, x_pos=10, y_pos=10, image="Source/Assets/Clear Block.png"):
+	def __init__(self, width=CHAR_WIDTH, height=CHAR_HEIGHT, x_pos=CENTER_X, y_pos=CENTER_Y, image=DEFAULT_IMAGE):
+
 		self.set_width(width)
 		self.set_height(height)
 		self.set_x_pos(x_pos)
@@ -34,6 +37,9 @@ class sprite:
 	def get_image(self):
 		return self.__image
 
+	def get_sprite_char(self):
+		return self.__sprite_char
+
 	# Setters
 	def set_width(self, width):
 		self.__width = width
@@ -49,6 +55,9 @@ class sprite:
 
 	def set_image(self, image):
 		self.__image = image
+
+	def set_sprite_char(self, sprite_char):
+		self.__sprite_char = sprite_char
 
 	# ToString
 	def __str__(self):

@@ -1,10 +1,9 @@
 # Import Files/Modules
-from Source.Game_Windows.default_window import default_window
 from Source.Interactors.sprite import sprite
 import pygame
 import os
 
-class character(sprite):
+class character(sprite, pygame.sprite.Sprite):
 	# Data Attributes
 	__health = "Error"
 	__speed = "Error"
@@ -12,20 +11,21 @@ class character(sprite):
 	__attack_damage = "Error"
 
 	# Init
-	def __init__(self, width, height, x_pos, y_pos, image, health, speed, attack_range, attack_damage):
+	def __init__(self, sprite_sheet, width, height, x_pos, y_pos, image, health, speed, attack_range, attack_damage):
 		super().__init__(width, height, x_pos, y_pos, image)
 		self.set_health(health)
 		self.set_speed(speed)
 		self.set_attack_range(attack_range)
 		self.set_attack_damage(attack_damage)
 
-		# Sets character
+		self.sprite_sheet = sprite_sheet
+		self.groups = self.sprite_sheet.all_sprites  # Get all sprites group
+		pygame.sprite.Sprite.__init__(self, self.groups)
+
 		self.character = pygame.image.load(os.path.join('Assets', image))
 		self.image = pygame.transform.scale(self.character, (width, height))
-		self.character_rect = self.image.get_rect() # Turns character into a rectangle
-
-		# Sets window
-		self.game_window = default_window().init_window()
+		self.rect = self.image.get_rect()
+		self.rect.topleft = (x_pos, y_pos)
 
 	# Helpers
 
