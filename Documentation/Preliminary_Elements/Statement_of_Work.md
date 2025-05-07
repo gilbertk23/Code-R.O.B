@@ -9,4 +9,4 @@
 The scope of our project is to create a roleplay game with a GUI displaying a top-down view, grid/tile-based levels, pixel art, background music, enemies, a final boss, and various game items. We will NOT be creating a game that takes multiple hours of progression to fully complete, multiplayer interaction, or internet connectivity.
 
 ### Team Expectations
-As a team, we expect to develop a fully functional two-dimentional roleplay game with a main plot line, multiple "levels" to progress through, and minimal bugs/errors.
+As a team, we expect to develop a fully functional two-dimentional roleplay game with a main end goal, multiple "levels" to progress through, and minimal bugs/errors.
