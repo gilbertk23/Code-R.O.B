@@ -47,7 +47,12 @@ Use the main branch link, [main](https://github.com/gilbertk23/cybr404project3/t
 - [Maintenance Overview](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Maintenance/Maintenance_Overview.md)
 - [Maintenance Timeline](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Maintenance/Maintenance_Timeline.md)
 
+#### `Weekly Presentations`
+- [Week One Presentation](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/Weekly_Presentations/Week%201%20Presentation.pdf)
+- [Week Two Presentation](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/Weekly_Presentations/Week%202%20Presentation.pdf)
+
 #### `Misc:`
+- [Members Page](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/Members.md)
 - [Main Daily Update Index](https://github.com/gilbertk23/cybr404project3/tree/main/Documentation/Daily_Updates)
 - [Lore](https://github.com/gilbertk23/cybr404project3/tree/main/Documentation/LORE)
 - [Rough Idea](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/rough_idea.md)
