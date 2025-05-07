@@ -1,15 +1,15 @@
 # Import Files/Modules
 from pygame.sprite import Sprite
 
-from Source.Interactors.sprite_sheet import sprite_sheet
-from Source.Game_Windows.default_window import default_window
-from Source.Interactors.character import character
-from Source.Interactors.load_sprites import load_sprites
-from Source.Maps.map_generator import map_generator
-from Source.Game_Windows.windows import windows
-from Source.Interactors.enemy import enemy
-from Source.Maps.game_world import world
-from Source.Interactors.config import *
+from Interactors.sprite_sheet import sprite_sheet
+from Game_Windows.default_window import default_window
+from Interactors.character import character
+from Interactors.load_sprites import load_sprites
+from Maps.map_generator import map_generator
+from Game_Windows.windows import windows
+from Interactors.enemy import enemy
+from Maps.game_world import world
+from Interactors.config import *
 import random
 import pygame
 

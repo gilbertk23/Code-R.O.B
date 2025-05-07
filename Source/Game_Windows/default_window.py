@@ -1,6 +1,6 @@
 #Import Files/Modules
 import pygame
-from Source.Interactors.config import *
+from Interactors.config import *
 
 class default_window:
 	# Data Attributes

@@ -1,5 +1,5 @@
 # Import Files/Modules
-from Source.Interactors.sprite import sprite
+from Interactors.sprite import sprite
 import pygame
 import os
 

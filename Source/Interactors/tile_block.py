@@ -1,6 +1,6 @@
 # Import Data Attributes
-from Source.Interactors.config import *
-from Source.Interactors.sprite_sheet import sprite_sheet
+from Interactors.config import *
+from Interactors.sprite_sheet import sprite_sheet
 import pygame
 
 class tile_block(pygame.sprite.Sprite):

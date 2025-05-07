@@ -1,6 +1,6 @@
 # Import Files/Modules
-from Source.Game_Windows.default_window import default_window
-from Source.Interactors.sprite import sprite
+from Game_Windows.default_window import default_window
+from Interactors.sprite import sprite
 import pygame
 import os
 

@@ -1,7 +1,7 @@
 import pygame
-from Source.Maps.map_generator import map_generator
-from Source.Interactors.character import character
-from Source.Game_Windows.default_window import default_window
+from Maps.map_generator import map_generator
+from Interactors.character import character
+from Game_Windows.default_window import default_window
 
 class world:
 	# Data Attributes

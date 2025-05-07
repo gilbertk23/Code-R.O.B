@@ -1,6 +1,6 @@
 # Import Files/Modules
-from Source.Interactors.button import button
-from Source.Interactors.config import *
+from Interactors.button import button
+from Interactors.config import *
 import pygame
 
 class windows:

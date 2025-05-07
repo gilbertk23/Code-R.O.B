@@ -1,9 +1,9 @@
 from tarfile import BLOCKSIZE
 
-from Source.Interactors.main_character import main_character
-from Source.Interactors.enemy import enemy
-from Source.Interactors.tile_block import tile_block
-from Source.Interactors.config import *
+from Interactors.main_character import main_character
+from Interactors.enemy import enemy
+from Interactors.tile_block import tile_block
+from Interactors.config import *
 import random
 import pygame
 import sys

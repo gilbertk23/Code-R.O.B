@@ -1,5 +1,5 @@
 import pygame
-from Source.Interactors.config import *
+from Interactors.config import *
 
 class sprite_sheet:
     # Data Attributes

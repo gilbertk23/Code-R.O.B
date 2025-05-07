@@ -1,6 +1,6 @@
 # Import Files/Modules
-from Source.Interactors.character import character
-from Source.Interactors.config import *
+from Interactors.character import character
+from Interactors.config import *
 import math
 
 
