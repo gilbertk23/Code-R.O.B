@@ -6,6 +6,7 @@ R.O.B is a Python 2d RPG game that allows you to pick up coins to progress in sc
 
 Click here to go back to the [`Documentation`](Documentation) directory
 
+### Lore
 
 The first idea that i have for an over-arching story is, The main character is a person from here and now. Maybe even someone at UNK (100% ADAM XD), a portal 
 opens and drops the character + another person/thing (someone they care about, a pet, the device that opened the portal) through into antoher reality, and they
