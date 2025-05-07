@@ -5,11 +5,15 @@ the successfullness of the setters and getters.
 
 **Week Two** - Our game structure has completely changed and we've decided to scope down a little. As a result of this, we'll be moving onto somethings that are simpler and I'll have to replace and remove some getter and setters testers.
 
+**Week Three** - As of week three, our game is an actual functional game. We do need to work on a coliding system and then fixing some other features.
+
 ## Plan
 **Week One** - To do this, we'll implement a module named "unittest". From this module, it makes the testing of setters and getters straightforward and uncomplicated. We'll do test to get the value from the getters and test it
 with the value that it's supposed to return. The same logic will be applied for the setters, but this time we'll set a value and then test it.
 
 **Week Two** - To acomplish this, let's refactor the getters and setters tester to fully match with the code that is in the code database. We'll also start on a blackbox function if we can and then also work on doing some tests on the helpers.
+
+**Week Three** - Throughout the week, we'll be implementing some try excepts to make sure we get a proper error that is readable. We'll also make sure to log in the CLI if our assets load correctly.
 
 ## Results
 **Week One** - As of right now, all of the setters and getters work with a 100% success rate. 
