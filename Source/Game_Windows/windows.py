@@ -66,38 +66,48 @@ class windows:
         main_menu_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()- 90, image=main_menu_button_img)
         if(main_menu_button.draw(self.game_window)):
             self.set_menu_state("Main_Menu")
+################################################
+################################################
+################################################
 
     # Main Menu
     def draw_main_menu(self):
         if self.get_menu_state() == "Main_Menu":
-            pygame.Surface.fill(self.game_window, (0, 0, 0))
+            pygame.Surface.fill(self.game_window, (0,0,0))
+            bg_image = pygame.image.load("Assets/main_menu/main_menu_background_desat_vingnette.png")
+            self.game_window.blit(bg_image, (0,0))
             self.create_title()
             self.create_play_button()
             self.create_settings_button()
             self.create_credits_button()
 
     def create_title(self):
-        title_img = pygame.image.load("Assets/ROB.png").convert_alpha()
-        title = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()/25, image=title_img)
+        title_img = pygame.image.load("Assets/main_menu/title.png").convert_alpha()
+        title = button(width=384, height=128, x_pos=(self.game_window.get_width()/2)-(384/2), y_pos=self.game_window.get_height()/10, image=title_img)
         title.draw(self.game_window)
 
     def create_play_button(self):
-        play_button_img = pygame.image.load("Assets/play_game.png").convert_alpha()
-        play_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()/3, image=play_button_img)
+        play_button_img = pygame.image.load("Assets/main_menu/start_btn2.png").convert_alpha()
+        play_button = button(width=230*1.5, height=62*1.5, x_pos=(self.game_window.get_width()/2)-(230*1.5/2), y_pos=self.game_window.get_height()-425, image=play_button_img)
         if(play_button.draw(self.game_window)):
             self.set_menu_state("play_game")
 
     def create_settings_button(self):
-        settings_button_img = pygame.image.load("Assets/settings.png").convert_alpha()
-        settings_button = button(x_pos=self.game_window.get_width() / 2.5, y_pos=self.game_window.get_height() / 2, image=settings_button_img)
+        settings_button_img = pygame.image.load("Assets/main_menu/settings_btn.png").convert_alpha()
+        settings_button = button(width=230*1.5, height=62*1.5, x_pos=(self.game_window.get_width()/2)-(230*1.5/2), y_pos=self.game_window.get_height()-300, image=settings_button_img)
         if (settings_button.draw(self.game_window)):
             self.set_menu_state("settings")
 
     def create_credits_button(self):
-        credits_button_img = pygame.image.load("Assets/credits.png").convert_alpha()
-        credits_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()/1.5, image=credits_button_img)
+        credits_button_img = pygame.image.load("Assets/main_menu/cred_btn_2.png").convert_alpha()
+        credits_button = button(width=230*1.5, height=62*1.5, x_pos=(self.game_window.get_width()/2)-(230*1.5/2), y_pos=self.game_window.get_height()-175, image=credits_button_img)
         if(credits_button.draw(self.game_window)):
             self.set_menu_state("credits")
+
+
+################################################
+################################################
+################################################
 
     # Getters
     def get_menu_state(self):
