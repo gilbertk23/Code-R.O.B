@@ -16,8 +16,6 @@ class main_character(character):
 
         self._layer = PLAYER_LAYER  # Set Player Layer
 
-
-
         # World Information
         self.game_window = window
 

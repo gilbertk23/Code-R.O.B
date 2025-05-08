@@ -51,7 +51,10 @@ FONT1 = 'freesansbold.ttf'
 # Asset Settings
 DEFAULT_IMAGE = 'Source/Assets/default.png'
 
+# Terrain and Block Information
+
 # Layer Settings
 PLAYER_LAYER = 1
-ENEMY_LAYER = 1
-BLOCK_LAYER = 0
+ENEMY_LAYER = 3
+GROUND_LAYER = 3
+BLOCK_LAYER = 2

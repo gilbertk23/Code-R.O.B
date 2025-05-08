@@ -46,8 +46,14 @@ class windows:
     def draw_credits(self):
         if self.get_menu_state() == "credits":
             pygame.Surface.fill(self.game_window, (0, 0, 0))
+            self.draw_credits_window()
             self.create_title()
             self.create_main_menu_button()
+
+    def draw_credits_window(self):
+        credits_img = pygame.image.load("Assets/Credits.png").convert_alpha()
+        credits_button = button(x_pos=self.game_window.get_width() / 2.5, y_pos=self.game_window.get_height() - 90, image=credits_img)
+        credits_button.draw(self.game_window)
 
     # Settings
     def draw_settings(self):
@@ -94,7 +100,7 @@ class windows:
             self.set_menu_state("settings")
 
     def create_credits_button(self):
-        credits_button_img = pygame.image.load("Assets/credits.png").convert_alpha()
+        credits_button_img = pygame.image.load("Assets/credits_button.png").convert_alpha()
         credits_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()/1.5, image=credits_button_img)
         if(credits_button.draw(self.game_window)):
             self.set_menu_state("credits")
