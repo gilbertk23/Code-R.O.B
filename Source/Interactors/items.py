@@ -6,9 +6,10 @@ import os
 
 class items(sprite, pygame.sprite.Sprite):
     # Data Attributes
+    __isactive = True
 
     # Init
-    def __init__(self, sprite_sheet, width, height, x_pos, y_pos, image, target=None):
+    def __init__(self, sprite_sheet, width, height, x_pos, y_pos, image, target=None, isactive=True):
         super().__init__(width, height, x_pos, y_pos, image)
 
         self.sprite_sheet = sprite_sheet
@@ -22,6 +23,7 @@ class items(sprite, pygame.sprite.Sprite):
         self.rect.topleft = (x_pos, y_pos)
 
         self.set_target(target)
+        self.set_isactive(isactive)
 
     # Helpers
     def update(self, world, target_x_pos, target_y_pos):
@@ -36,6 +38,12 @@ class items(sprite, pygame.sprite.Sprite):
     def get_target(self):
         return self.__target
 
+    def get_isactive(self):
+        return self.__isactive
+
     # Setters
     def set_target(self, target):
         self.__target = target
+
+    def set_isactive(self, isactive):
+        self.__isactive = isactive
