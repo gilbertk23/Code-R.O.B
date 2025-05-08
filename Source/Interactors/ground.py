@@ -18,49 +18,30 @@ class tile_block(pygame.sprite.Sprite):
 		self.set_block_width(TILE_SIZE)
 		self.set_block_height(TILE_SIZE)
 
-		self.sprite_list = sprite_list
-		self.terrain_sprite_sheet = sprite_sheet("Assets/FD_Ground_Tiles.png")
-		self._layer = BLOCK_LAYER
-		self.groups = self.sprite_list.all_sprites, blocks_group
-		pygame.sprite.Sprite.__init__(self, self.groups)
-
-		self.image = self.terrain_sprite_sheet.get_sprite(100, 448, self.get_block_width(), self.get_block_height())
-
-		self.rect = self.image.get_rect()
-		self.rect.x = start_block_x + 100
-		self.rect.y = start_block_y + 100
-
-	# Helpers
-	def return_blocks(self, block_type):
-		if block_type == 0:
-			self.image = self.terrain_sprite_sheet.get_sprite(100, 400, self.get_block_width(), self.get_block_height())
-		if block_type == 3:
-			self.image = self.terrain_sprite_sheet.get_sprite(100, 200, self.get_block_width(), self.get_block_height())
-
 	# Getters
-	def get_start_block_x(self): 
+	def get_start_block_x(self):
 		return self.__start_block_x
 
-	def get_start_block_y(self): 
+	def get_start_block_y(self):
 		return self.__start_block_y
 
-	def get_block_width(self): 
+	def get_block_width(self):
 		return self.__block_width
 
-	def get_block_height(self): 
+	def get_block_height(self):
 		return self.__block_height
 
 	# Setters
-	def set_start_block_x(self, start_block_x): 
+	def set_start_block_x(self, start_block_x):
 		self.__start_block_x = start_block_x
 
-	def set_start_block_y(self, start_block_y): 
+	def set_start_block_y(self, start_block_y):
 		self.__start_block_y = start_block_y
 
-	def set_block_width(self, block_width): 
+	def set_block_width(self, block_width):
 		self.__block_width = block_width
 
-	def set_block_height(self, block_height): 
+	def set_block_height(self, block_height):
 		self.__block_height = block_height
 
 	# ToString

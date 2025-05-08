@@ -1,12 +1,8 @@
-from tarfile import BLOCKSIZE
-
 from Source.Interactors.main_character import main_character
 from Source.Interactors.enemy import enemy
-from Source.Interactors.tile_block import tile_block
-from Source.Interactors.config import *
+from Source.Interactors.sprite_block import sprite_block
 import random
 import pygame
-import sys
 
 
 class load_sprites:
@@ -18,6 +14,7 @@ class load_sprites:
         self.set_sprite_list(sprite_list)
         self.all_sprites = pygame.sprite.LayeredUpdates()
         self.blocks = pygame.sprite.LayeredUpdates()
+        self.ground = pygame.sprite.LayeredUpdates()
         self.enemies = pygame.sprite.LayeredUpdates()
         self.attacks = pygame.sprite.LayeredUpdates()
 
@@ -29,7 +26,7 @@ class load_sprites:
         self.world_array = world_array
 
         self.main_character = self.load_character(window)
-        self.load_enemies = self.find_enemies(enemy_num)
+        self.find_enemies(enemy_num)
 
         self.create_tilemap(tile_map)
 
@@ -53,11 +50,12 @@ class load_sprites:
         self.all_sprites.draw(game_window)
 
     def create_tilemap(self, tile_map):
-        for i, row in enumerate(tile_map):
-            for j, column in enumerate(row):
-                tile_block(self, self.blocks, j * 20, i * 20).return_blocks(column)
-
-
+        for x, row in enumerate(tile_map):
+            for y, column in enumerate(row):
+             #   sprite_block(self, y * 20, x * 20, "BLOCKS")
+                if column == 1:
+                    sprite_block(self,y * 20, x * 20, "GROUND")
+                    pass
 
     # Getters
     def get_sprite_list(self):
