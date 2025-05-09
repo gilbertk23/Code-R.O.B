@@ -24,6 +24,7 @@ class load_sprites:
         # World Information
         self.game_window = window
         self.world_array = world_array
+        self.tile_map = tile_map
 
         try:
             self.main_character = self.load_character(window)
@@ -46,10 +47,17 @@ class load_sprites:
     # Helpers
     def update(self, game_window):
         self.draw_sprites(game_window)
+
+        hits = pygame.sprite.spritecollide(self.main_character, self.blocks, False)
+
+        if hits:
+            print(hits)
+
+
         self.all_sprites.update(game_window, self.main_character.get_x_pos(), self.main_character.get_y_pos())
 
     def load_character(self, window):
-        character = main_character(self, window=window, x_pos=200, y_pos=300, image='Player Sprite.png')
+        character = main_character(self, window=window, x_pos=200, y_pos=300, image='Player Sprite.png', tile_map=self.tile_map)
         return character
 
     def find_enemies(self, enemy_num):
@@ -60,12 +68,13 @@ class load_sprites:
             self.enemy_list.append(new_enemy)
 
     def draw_sprites(self, game_window):
+        self.blocks.draw(game_window)
         self.all_sprites.draw(game_window)
 
     def create_tilemap(self, tile_map):
         for x, row in enumerate(tile_map):
             for y, column in enumerate(row):
-             #   sprite_block(self, y * 20, x * 20, "BLOCKS")
+                sprite_block(self, y * 20, x * 20, "BLOCKS")
                 if column == 1:
                     sprite_block(self,y * 20, x * 20, "GROUND")
                     pass

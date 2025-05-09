@@ -6,8 +6,6 @@ from Source.Game_Windows.windows import windows
 from Source.Interactors.config import *
 import pygame
 
-from pygame.sprite import Sprite
-
 
 # Initialize pygame
 pygame.init()

@@ -24,7 +24,7 @@ class sprite_block(pygame.sprite.Sprite):
 		self.sprite_sheet = sprite_assets(sprite_type)
 		self.sprite_asset = self.sprite_sheet.get_sprite_image()
 		self._layer = GROUND_LAYER
-		self.groups = self.get_sprite_list().all_sprites
+		self.groups = self.get_sprite_list().blocks
 		pygame.sprite.Sprite.__init__(self, self.groups)
 
 		self.image = self.sprite_asset.get_sprite(self.sprite_sheet.sprite_x(), self.sprite_sheet.sprite_y(), self.get_block_width(), self.get_block_height())

@@ -16,7 +16,7 @@ class sprite_assets:
             asset_sheet = [sprite_sheet("Assets/FD_Ground_Tiles.png"), 463, 335, "GROUND_LAYER", 1]
 
         elif self.get_sprite_type() == "BLOCKS":
-            asset_sheet = [sprite_sheet("Assets/FD_Ground_Tiles.png"), 100, 100, "BLOCK_LAYER", 2]
+            asset_sheet = [sprite_sheet("Assets/FD_Ground_Tiles.png"), 463, 335, "BLOCK_LAYER", 2]
 
         elif self.get_sprite_type() == "MAIN_CHARACTER":
             asset_sheet = [sprite_sheet("Assets/FD_Ground_Tiles.png"), 200, 200, "PLAYER_LAYER", 3]
@@ -34,8 +34,6 @@ class sprite_assets:
 
     def get_sprite_layer(self):
         return self.get_sprite_sheet()[3]
-
-
 
     # Getters
     def get_sprite_type(self):
