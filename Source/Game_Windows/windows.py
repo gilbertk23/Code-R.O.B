@@ -71,11 +71,17 @@ class windows:
         main_menu_button_img = pygame.image.load("Assets/main_menu.png").convert_alpha()
         main_menu_button = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height()- 90, image=main_menu_button_img)
         if(main_menu_button.draw(self.game_window)):
+            if self.get_menu_state() not in ["Main_Menu", "settings", "credits"]:
+                pygame.mixer.music.load("Assets/sound/RPG Medieval Fantasy - It Must Not End Here (Loopable).wav")
+                pygame.mixer.music.play(loops=-1) # loop indefinitely
             self.set_menu_state("Main_Menu")
 
     # Main Menu
     def draw_main_menu(self):
         if self.get_menu_state() == "Main_Menu":
+            if not (pygame.mixer.music.get_busy()):
+                pygame.mixer.music.load("Assets/sound/RPG Medieval Fantasy - It Must Not End Here (Loopable).wav")
+                pygame.mixer.music.play(loops=-1) # loop indefinitely
             pygame.Surface.fill(self.game_window, (0,0,0))
             bg_image = pygame.image.load("Assets/main_menu/main_menu_background_desat_vingnette.png")
             self.game_window.blit(bg_image, (0,0))
@@ -93,6 +99,8 @@ class windows:
         play_button_img = pygame.image.load("Assets/main_menu/start_btn2.png").convert_alpha()
         play_button = button(width=230*1.5, height=62*1.5, x_pos=(self.game_window.get_width()/2)-(230*1.5/2), y_pos=self.game_window.get_height()-425, image=play_button_img)
         if(play_button.draw(self.game_window)):
+            pygame.mixer.music.load("Assets/sound/RPG Medieval Fantasy - Temple Call (Loopable).wav")
+            pygame.mixer.music.play(loops=-1) # loop indefinitely
             self.set_menu_state("play_game")
 
     def create_settings_button(self):
