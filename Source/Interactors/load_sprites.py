@@ -25,8 +25,21 @@ class load_sprites:
         self.game_window = window
         self.world_array = world_array
 
-        self.main_character = self.load_character(window)
-        self.find_enemies(enemy_num)
+        try:
+            self.main_character = self.load_character(window)
+            print("Main character has loaded successfully!")
+        except ImportError:
+            print("Source or pygame has not been imported correctly, please make sure to import the packages.")
+        except Exception as e:
+            print("Error: ", e)
+
+        try:
+            self.load_enemies = self.find_enemies(enemy_num)
+            print("Enemies have loaded successfully!")
+        except ImportError:
+            print("Source or pygame has not been imported correctly, please make sure to import the packages.")
+        except Exception as e:
+            print("Error: ", e)
 
         self.create_tilemap(tile_map)
 

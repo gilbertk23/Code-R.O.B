@@ -124,7 +124,13 @@ class windows:
 
     # Setters
     def set_menu_state(self, menu_state):
-        self.__menu_state = menu_state
+        try:
+            self.__menu_state = menu_state
+            print(menu_state, "has loaded successfully!")
+        except ImportError:
+            print("Source or pygame has not been imported correctly, please make sure to import the packages.")
+        except Exception as e:
+            print("Error: ", e)
 
     def set_font(self, font):
         self.__font = font
