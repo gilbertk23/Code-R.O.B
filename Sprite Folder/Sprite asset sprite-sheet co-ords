@@ -1,3 +1,7 @@
 
 character_005_Battler(player): 200,18
 boss_005(enemy) 52, 11 (using boss png cuz we are only going to have one stage to show, so the more impressive enemy seems to make sense)
+FD_Dungeon_doors : 312, 16
+FD_Dungeon (floor): 272, 352
+FD_Dungeon (walls): 305, 65
+Enemies_07 (if anyone is feeling ambitious): 266, 3
