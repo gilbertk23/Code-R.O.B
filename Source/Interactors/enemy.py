@@ -21,9 +21,15 @@ class enemy(character):
         self.enemy_collide(target_x_pos, target_y_pos)
         self.rect.topleft = (self.get_x_pos(), self.get_y_pos())  # Update character to window
 
+    def character_hit(self, target_x_pos, target_y_pos):
+        if self.get_x_pos() in range(target_x_pos-20, target_x_pos+20) and self.get_y_pos() in range(target_y_pos-20, target_y_pos+20):
+            return True
+
     def enemy_collide(self, target_x_pos, target_y_pos):
-        if self.get_x_pos() == target_x_pos and self.get_y_pos() == target_y_pos:
-            self.kill()
+        if self.get_x_pos() in range(target_x_pos-35, target_x_pos+35) and self.get_y_pos() in range(target_y_pos-35, target_y_pos+35):
+            self.set_health(self.get_health()-1)
+            if self.get_health() <= 0:
+                self.kill()
 
     def get_new_x_pos(self, target_x_pos):
         if target_x_pos < self.get_x_pos():

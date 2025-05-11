@@ -1,6 +1,7 @@
 import pygame
 from Source.Interactors.config import *
 
+
 class sprite_sheet:
     # Data Attributes
     __sprite_sheet_image = "Error"
@@ -12,7 +13,7 @@ class sprite_sheet:
     # Helpers
     def get_sprite(self, x, y, width, height):
         sprite = pygame.Surface([width, height])
-        sprite.blit(self.get_sprite_sheet_image(), (0,0), (x, y, width, height))
+        sprite.blit(self.get_sprite_sheet_image(), (0, 0), (x, y, width, height))
         sprite.set_colorkey(BLACK)
         return sprite
 

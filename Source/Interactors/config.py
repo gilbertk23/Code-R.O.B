@@ -17,9 +17,9 @@ BOARD SIZE CALCULATED BY MULTIPLYING ROW_SIZE * TILE_SIZE AND COL_SIZE * TILE_SI
 '''
 
 # Board Settings
-TILE_SIZE = 20
-ROW_SIZE = 25
-COL_SIZE = 35
+TILE_SIZE = 16
+ROW_SIZE = 32
+COL_SIZE = 44
 
 # Menu Titles
 MAIN_MENU = "Main_Menu"
@@ -54,7 +54,7 @@ DEFAULT_IMAGE = 'Source/Assets/default.png'
 # Terrain and Block Information
 
 # Layer Settings
-PLAYER_LAYER = 1
+PLAYER_LAYER = 3
 ENEMY_LAYER = 3
-GROUND_LAYER = 3
+GROUND_LAYER = 1
 BLOCK_LAYER = 2

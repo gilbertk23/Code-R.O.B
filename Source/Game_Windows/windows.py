@@ -38,7 +38,7 @@ class windows:
     def draw_game_world(self):
         if self.get_menu_state() == "play_game":
             pygame.Surface.fill(self.game_window, (0, 0, 0))
-            pygame.draw.rect(self.game_window, (255, 0, 0), (95, 95, self.game_window.get_width() - 190, self.game_window.get_height() - 190), 5)
+            pygame.draw.rect(self.game_window, (255, 255, 255), (95, 95, self.game_window.get_width() - 187, self.game_window.get_height() - 177), 5)
             # self.create_title()
             self.create_main_menu_button()
 

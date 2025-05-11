@@ -66,4 +66,3 @@ class default_window:
 		self.__font = font
 
 	# To String
-

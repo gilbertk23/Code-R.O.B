@@ -15,7 +15,7 @@ class map_generator:
 	__map_count = "Error"
 
 	# Init
-	def __init__(self, row_size=ROW_SIZE, col_size=COL_SIZE, min_enemies= 100, max_enemies= 100, current_score=0, map_count=1):
+	def __init__(self, row_size=ROW_SIZE, col_size=COL_SIZE, min_enemies= 30, max_enemies= 30, current_score=0, map_count=1):
 		self.set_row_size(row_size)
 		self.set_col_size(col_size)
 		self.set_min_enemies(min_enemies)

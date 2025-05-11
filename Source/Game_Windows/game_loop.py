@@ -1,11 +1,17 @@
 # Import Files/Modules
+from pygame.sprite import Sprite
+
+from Source.Interactors.sprite_sheet import sprite_sheet
 from Source.Game_Windows.default_window import default_window
+from Source.Interactors.character import character
 from Source.Interactors.load_sprites import load_sprites
 from Source.Maps.map_generator import map_generator
 from Source.Game_Windows.windows import windows
+from Source.Interactors.enemy import enemy
+from Source.Maps.game_world import world
 from Source.Interactors.config import *
+import random
 import pygame
-
 
 # Initialize pygame
 pygame.init()
@@ -26,6 +32,7 @@ class game_loop:
         self.world_array = map_generator()
         self.get_sprites = load_sprites(self.game_window, self.world_array, self.world_array.get_num_enemies(), self.world_array.generate_map_array())
 
+        self.enemies = []
 
     def update_screen(self):
         self.game_window.fill(BLACK)
@@ -36,6 +43,7 @@ class game_loop:
     def create_game_world(self):
         if self.current_window.get_menu_state() == "play_game":
             self.get_sprites.update(self.game_window)
+
 
     def run_game(self):
         clock = pygame.time.Clock()
