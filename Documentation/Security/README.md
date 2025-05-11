@@ -1,8 +1,7 @@
+# Security Documentation Index
 
-# R.O.B
+- [Security Design Document](Security%20Design%20Document.md)
+- [Security Statement](Security%20Statement.md)
 
-R.O.B is a Python 2d RPG game that allows you to pick up coins to progress in score.
 
-## Documentation Navigation
-
-Click here to go back to the [`Documentation`](Documentation) directory
+[Click here to go back to the `Documentation` directory](../)

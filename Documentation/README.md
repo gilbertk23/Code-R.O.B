@@ -1,66 +1,41 @@
-# R.O.B
+# Documentation Index
 
-R.O.B is a Python 2d RPG game that allows you to pick up coins to progress in score.
+Here we store all of the documentation for our project. Below you can find an index of the relevant files.
 
-## Installation
+## Preliminary Elements
 
-Use the main branch link, [main](https://github.com/gilbertk23/cybr404project3/tree/main) to install the zip code for R.O.B.
+- [Executive Summary](Preliminary_Elements/Executive_Summary.md)
+- [Outcome Summary](Preliminary_Elements/Outcome_Summary.md)
+- [Problem Statement](Preliminary_Elements/Problem_Statement.md)
+- [Statement of Work](Preliminary_Elements/Statement_of_Work.md)
+- [Standards and Practices](Preliminary_Elements/Standards_and_Practices_Statement.md)
+- [Project Timeline](Preliminary_Elements/Project_Timeline.png)
+- [Members](Preliminary_Elements/Members.md)
+- [Rough Idea](Preliminary_Elements/rough_idea.md)
 
-## Documentation Index
-#### `Data Flow Diagrams:`
-- [DFD L1 - 04/21/25](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/DFDs/DFD_L1_04_21_25.png)
-- [DFD L1 - 04/25/25 - Nova](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/DFDs/DFD_L1_04_25_25_Nova.svg)
-- [DFD L0 - 05/06/25](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/DFDs/DFD_L0_05_06_25.png)
-- [DFD L1 - 05/06/25](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/DFDs/DFD_L1_05_06_25.png)
+## Requirements
 
-#### `Problem Frames`
-- [Problem Frame - 04/23/25](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/Problem_Frames/Problem_Frames_04_23_25.png)
-- [Problem Frame - 05/04/25](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/Problem_Frames/Problem%20Frames_05_04_25.png)
+- [Security Requirements](Requirements/Security%20Requirements.md)
+- [Software Requirements](Requirements/Software_Requirements.md)
+- [User Requirements](Requirements/User_Requirements.md)
+- [Hardware Requirements](Requirements/Hardware_Requirements.md)
 
-#### `Timeline:`
-- [Timeline](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Preliminary_Elements/Project_Timeline/Project_Timeline.png)
+## Security
 
-#### `UMLS:`
-- [UML - 04/21/25](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/UMLs/UML_Diagram_04_21_25.png)
-- [UML - 04/21/25 2.0](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/UMLs/UML_Diagram_04_21_25.2.0.png)
-- [UML - 04/23/25](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/UMLs/UML_Diagram_04_23_25.png)
-- [UML - 05/03/25](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/UMLs/UML_Diagram_05_03_25.png)
-- [UML - 05/04/25](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/UMLs/UML_Diagram_05_04_25.png)
-- [UML - 05/05/25](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/UMLs/UML_Diagram_05_05_25.png)
+- [Security Design Document](Security/Security%20Design%20Document.md)
+- [Security Statement](Security/Security%20Statement.md)
 
-#### `Main Documentation:`
-- [Executive Summary](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Preliminary_Elements/Executive_Summary.md)
-- [Outcome Summary](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Preliminary_Elements/Outcome_Summary.md)
-- [Problem Statement](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Preliminary_Elements/Problem_Statement.md)
-- [Coding Standards and Practices](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Preliminary_Elements/Standards_and_Practices_Statement.md)
-- [Statement of Work](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Preliminary_Elements/Statement_of_Work.md)
+## Maintenance
 
-#### `Requirements:`
-- [Hardware Requirements](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Requirements/Hardware_Requirements.md)
-- [Security Requirements](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Requirements/Security%20Requirements.md)
-- [Software Requirements](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Requirements/Software_Requirements.md)
-- [User Requirements](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Requirements/User_Requirements.md)
+- [Maintenance Overview](Maintenance/Maintenance_Overview.md)
+- [Maintenance Timeline](Maintenance/Maintenance_Timeline.md)
 
-#### `Maintence / Security:`
-- [Security Design Document](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Security/Security%20Design%20Document.md)
-- [Security Statement](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Security/Security%20Statement.md)
-- [Maintenance Overview](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Maintenance/Maintenance_Overview.md)
-- [Maintenance Timeline](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/Maintenance/Maintenance_Timeline.md)
+## Diagrams
 
-#### `Weekly Presentations`
-- [Week One Presentation](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/Weekly_Presentations/Week%201%20Presentation.pdf)
-- [Week Two Presentation](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/Weekly_Presentations/Week%202%20Presentation.pdf)
+- [DFD L1](Diagrams/DFD_L1_2025-05-10.png)
+- [Problem Frame](Diagrams/Problem_Frames_2025-05-07.png)
+- [UML](Diagrams/UML_Diagram_2025-05-05.png)
 
-#### `Misc:`
-- [Members Page](https://github.com/gilbertk23/Code-R.O.B/blob/main/Documentation/Members.md)
-- [Main Daily Update Index](https://github.com/gilbertk23/cybr404project3/tree/main/Documentation/Daily_Updates)
-- [Lore](https://github.com/gilbertk23/cybr404project3/tree/main/Documentation/LORE)
-- [Rough Idea](https://github.com/gilbertk23/cybr404project3/blob/main/Documentation/rough_idea.md)
+## Credit
 
-
-
-
-## How Documentation Will Be Done
-Everything is to be done in `.md` files unless there is reason to use another format (e.g. diagrams).
-
-#### Team Members: Gavin Sloan | Coder, Jerry Cai | Security, Kaden Gilbert | Team Lead, Nova Solarz | Documentation, and Nick Clark | Design
+- [Credit to Externally Sourced Assets](Credit_to_Externally_Sourced_Assets.md)

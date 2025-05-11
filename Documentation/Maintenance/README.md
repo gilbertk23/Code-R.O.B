@@ -1,7 +1,6 @@
-# R.O.B
+# Maintenance Index
 
-R.O.B is a Python 2d RPG game that allows you to pick up coins to progress in score.
+- [Maintenance Overview](Maintenance_Overview.md)
+- [Maintenance Timeline](Maintenance_Timeline.md)
 
-## Documentation Navigation
-
-Click here to go back to the [`Documentation`](Documentation) directory
+[Click here to go back to the `Documentation` directory](../)
