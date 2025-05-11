@@ -1,7 +1,12 @@
-# R.O.B
+# Preliminary Elements Index
 
-R.O.B is a Python 2d RPG game that allows you to pick up coins to progress in score.
+- [Executive Summary]()
+- [Outcome Summary]()
+- [Problem Statement]()
+- [Statement of Work]
+- [Standards and Practices]()
+- [Project Timeline]()
+- [Members]()
+- [Rough Idea]()
 
-## Documentation Navigation
-
-Click here to go back to the [`Documentation`](Documentation) directory
+[Click here to go back to the `Documentation` directory](Documentation)

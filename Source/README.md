@@ -39,4 +39,13 @@ Use the main branch link, [main](https://github.com/gilbertk23/cybr404project3/t
 ## How Documentation Will Be Done
 Everything is to be done in `.md` files unless there is reason to use another format (e.g. diagrams).
 
-#### Team Members: Gavin Sloan | Coder, Jerry Cai | Security, Kaden Gilbert | Team Lead, Nova Solarz | Documentation, and Nick Clark | Design
+#### Team Members: 
+Gavin Sloan | Coder 
+
+Jerry Cai | Security
+
+Kaden Gilbert | Team Lead
+
+Nova Solarz | Documentation
+
+Nick Clark | Design

@@ -1,8 +1,5 @@
-# R.O.B
+# Presentations
 
-R.O.B is a Python 2d RPG game that allows you to pick up coins to progress in score.
+These are slides for the presentations we gave each week in class.
 
-## Documentation Navigation
-
-Click here to go back to the [`Documentation`](Documentation) directory
-
+[Click here to go back to the `Documentation` directory](Documentation)
