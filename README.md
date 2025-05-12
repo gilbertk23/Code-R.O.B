@@ -1,6 +1,17 @@
 # R.O.B
 
-R.O.B is a Python 2d RPG game that allows you to pick up coins to progress in score.
+R.O.B is a Python 2d RPG game. The goal is simple: avoid enemies, progress through levels, and defeat the final boss.
+
+
+
+<details>
+<summary>How to Play (spoilers)</summary>
+<br>  
+Colliding with enemies will damage you, so duck, dive, and dodge your way around them as you move your way towards the doorways at the sides of each level.
+<br><br>
+After progressing through several of these bullet-hell-esque levels, you will reach the final boss! To deal damage and take out this horrible foe, your hero must endure pain as you colide with it, trading damage blow-for-blow!
+
+</details>
 
 ## Installation
 
