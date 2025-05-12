@@ -18,6 +18,8 @@ class windows:
     def draw_window(self):
         self.draw_win_window()
 
+        self.draw_lose_window()
+
         self.draw_main_menu()
 
         self.draw_game_world()
@@ -32,7 +34,12 @@ class windows:
             pygame.Surface.fill(self.game_window, (0, 0, 0))
             self.create_title()
             self.create_win_box()
-            self.create_main_menu_button()
+
+    def draw_lose_window(self):
+        if self.get_menu_state() == "lose_game":
+            pygame.Surface.fill(self.game_window, (0, 0, 0))
+            self.create_title()
+            self.create_lose_box()
 
     # Make world
     def draw_game_world(self):
@@ -66,6 +73,11 @@ class windows:
         win_box_img = pygame.image.load("Assets/win_box.png").convert_alpha()
         win_box = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height() / 2, image=win_box_img)
         win_box.draw(self.game_window)
+
+    def create_lose_box(self):
+        lose_box_img = pygame.image.load("Assets/lose_box.png").convert_alpha()
+        lose_box = button(x_pos=self.game_window.get_width()/2.5, y_pos=self.game_window.get_height() / 2, image=lose_box_img)
+        lose_box.draw(self.game_window)
 
     def create_main_menu_button(self):
         main_menu_button_img = pygame.image.load("Assets/main_menu.png").convert_alpha()

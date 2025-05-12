@@ -12,9 +12,11 @@ from Source.Maps.game_world import world
 from Source.Interactors.config import *
 import random
 import pygame
+import time
 
 # Initialize pygame
 pygame.init()
+
 
 class game_loop:
     __fps = -1
@@ -30,7 +32,8 @@ class game_loop:
 
         # Create world map
         self.world_array = map_generator()
-        self.get_sprites = load_sprites(self.game_window, self.world_array, self.world_array.get_num_enemies(), self.world_array.generate_map_array())
+        self.get_sprites = load_sprites(self.game_window, self.world_array, self.world_array.get_num_enemies(),
+                                        self.world_array.generate_map_array())
 
         self.enemies = []
 
@@ -38,12 +41,38 @@ class game_loop:
         self.game_window.fill(BLACK)
         self.current_window.draw_window()
         self.create_game_world()
+        self.display_health_text()
+        self.set_win_screen()
+        self.set_lose_screen()
         pygame.display.update()
+
+    def set_win_screen(self):
+        if self.get_sprites.map_count == 6:
+            if self.get_sprites.boss.get_health() <= 0:
+                self.current_window.set_menu_state('win_game')
+                self.set_fps(0)
+
+    def set_lose_screen(self):
+        if self.get_sprites.main_character.get_health() <= 0:
+            self.current_window.set_menu_state('lose_game')
+            self.set_fps(0)
+
+    def display_health_text(self):
+        if self.current_window.get_menu_state() == 'play_game':
+            self.create_health_text(self.get_sprites.main_character.get_health(), (100, 20))
+        if self.current_window.get_menu_state() == 'play_game' and self.get_sprites.map_count == 6:
+            self.create_health_text(self.get_sprites.boss.get_health(), (750, 20))
+
+    def create_health_text(self, sprite, location):
+        font = pygame.font.Font('freesansbold.ttf', 32)
+        text = font.render(f"Health: {sprite}", True, (255, 255, 255))
+        textRect = text.get_rect()
+        textRect.center = location
+        self.game_window.blit(text, textRect)
 
     def create_game_world(self):
         if self.current_window.get_menu_state() == "play_game":
             self.get_sprites.update(self.game_window)
-
 
     def run_game(self):
         clock = pygame.time.Clock()
@@ -65,4 +94,3 @@ class game_loop:
 
     def set_fps(self, fps):
         self.__fps = fps
-
