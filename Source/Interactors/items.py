@@ -31,7 +31,7 @@ class items(sprite, pygame.sprite.Sprite):
         self.rect.topleft = (self.get_x_pos(), self.get_y_pos())  # Update character to window
 
     def item_collide(self, target_x_pos, target_y_pos):
-        if self.get_x_pos() == target_x_pos and self.get_y_pos() == target_y_pos:
+        if self.get_x_pos() in range(target_x_pos-45, target_x_pos+45) and self.get_y_pos() in range(target_y_pos-45, target_y_pos+45):
             self.kill()
 
     # Getters

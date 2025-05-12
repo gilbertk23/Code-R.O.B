@@ -9,7 +9,7 @@ class main_character(character):
     __player_controlled = None
 
     # Init
-    def __init__(self, sprite_sheet, window, width=CHAR_WIDTH, height=CHAR_HEIGHT, x_pos=CENTER_X, y_pos=CENTER_Y, image=DEFAULT_IMAGE, tile_map=[], health=100, speed=2, attack_range=10, attack_damage=10, player_controlled=True):
+    def __init__(self, sprite_sheet, window, width=CHAR_WIDTH, height=CHAR_HEIGHT, x_pos=CENTER_X, y_pos=CENTER_Y, image=DEFAULT_IMAGE, tile_map=[], health=300, speed=2, attack_range=10, attack_damage=1, player_controlled=True):
         # Super Init of the Character class
         super().__init__(sprite_sheet, width, height, x_pos, y_pos, image, health, speed, attack_range, attack_damage)
         self.set_player_controlled(player_controlled)
@@ -29,7 +29,6 @@ class main_character(character):
     def key_press(self):
         key = pygame.key.get_pressed()
         key_press = None
-        print(self.get_speed())
         if key[pygame.K_a]:
             self.set_x_pos(self.get_x_pos() - self.get_speed())
             key_press = 'a'

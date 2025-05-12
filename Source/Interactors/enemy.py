@@ -9,7 +9,7 @@ class enemy(character):
     __target = None
 
     # Init
-    def __init__(self, sprite_sheet, width=CHAR_WIDTH, height=CHAR_HEIGHT, x_pos=CENTER_X, y_pos=CENTER_Y, image=DEFAULT_IMAGE, health=100, speed=3, attack_range=10, attack_damage=10, target=None):
+    def __init__(self, sprite_sheet, width=CHAR_WIDTH, height=CHAR_HEIGHT, x_pos=CENTER_X, y_pos=CENTER_Y, image=DEFAULT_IMAGE, health=100, speed=3, attack_range=10, attack_damage=1, target=None):
         super().__init__(sprite_sheet, width, height, x_pos, y_pos, image, health, speed, attack_range, attack_damage)
         self.set_target(target)
 
@@ -22,14 +22,12 @@ class enemy(character):
         self.rect.topleft = (self.get_x_pos(), self.get_y_pos())  # Update character to window
 
     def character_hit(self, target_x_pos, target_y_pos):
-        if self.get_x_pos() in range(target_x_pos-20, target_x_pos+20) and self.get_y_pos() in range(target_y_pos-20, target_y_pos+20):
+        if self.get_x_pos() in range(target_x_pos-13, target_x_pos+13) and self.get_y_pos() in range(target_y_pos-13, target_y_pos+13):
             return True
 
     def enemy_collide(self, target_x_pos, target_y_pos):
-        if self.get_x_pos() in range(target_x_pos-35, target_x_pos+35) and self.get_y_pos() in range(target_y_pos-35, target_y_pos+35):
+        if self.get_x_pos() in range(target_x_pos-35, target_x_pos+45) and self.get_y_pos() in range(target_y_pos-35, target_y_pos+45):
             self.set_health(self.get_health()-1)
-            if self.get_health() <= 0:
-                self.kill()
 
     def get_new_x_pos(self, target_x_pos):
         if target_x_pos < self.get_x_pos():
